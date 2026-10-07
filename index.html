@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Mon CV pour la PFMP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout : formulaire en étapes à gauche, feuille A4 vivante collée à droite ; une colonne sur téléphone */
+:root{
+  --bg:#EEF2F6; --surface:#FFFFFF; --sunk:#F6F8FB; --ink:#152130; --muted:#5A6779; --line:#D3DBE5;
+  --accent:#1B4F8F; --accent-soft:#E2EBF7; --on-accent:#FFFFFF;
+  --miss:#FFEE8A; --miss-line:#D9AE00; --miss-ink:#3D3200; --ok:#1C7A4E; --ok-soft:#DDF2E7;
+  --f-display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --f-body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141C; --surface:#17202B; --sunk:#111922; --ink:#E5EBF2; --muted:#9BA8B8; --line:#2B3846;
+  --accent:#78AEF2; --accent-soft:#1C2E45; --on-accent:#0B1422;
+  --miss:#5C4A00; --miss-line:#E2BA1C; --miss-ink:#FFF3BF; --ok:#5FD39A; --ok-soft:#163327; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0E141C; --surface:#17202B; --sunk:#111922; --ink:#E5EBF2; --muted:#9BA8B8; --line:#2B3846;
+  --accent:#78AEF2; --accent-soft:#1C2E45; --on-accent:#0B1422;
+  --miss:#5C4A00; --miss-line:#E2BA1C; --miss-ink:#FFF3BF; --ok:#5FD39A; --ok-soft:#163327; color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1420px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* En-tête du lycée */
+.school{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.mono{width:52px;height:52px;flex:none;border-radius:8px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:.02em}
+.school p{margin:0;font-size:13.5px;color:var(--muted);min-width:0}
+.school strong{color:var(--ink);font-size:14.5px}
+.intro{display:grid;gap:6px;padding-block:18px 8px}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.intro p{margin:0;max-width:70ch;color:var(--muted)}
+.intro mark{background:var(--miss);color:var(--miss-ink);padding:0 4px;border-radius:3px}
+
+.layout{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:28px;align-items:start;margin-top:14px}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}}
+
+/* Étapes */
+.steps{display:grid;gap:16px;min-width:0}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:grid;gap:14px;min-width:0}
+.step h2{margin:0;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:19px}
+.num{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:15px;flex:none}
+.step h2 .done{margin-left:auto;font-family:var(--f-body);font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--miss);color:var(--miss-ink)}
+.step h2 .done.ok{background:var(--ok-soft);color:var(--ok)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.grid .full{grid-column:1/-1}
+@media (max-width:520px){.grid{grid-template-columns:minmax(0,1fr)}}
+.field{display:grid;gap:4px;min-width:0}
+.field>label,.lab{font-weight:700;font-size:13.5px}
+input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:7px;background:var(--sunk);min-width:0}
+textarea{resize:vertical;min-height:84px}
+.missing input,.missing select,.missing textarea,input.missing,select.missing,textarea.missing{background:var(--miss);border-color:var(--miss-line);color:var(--miss-ink)}
+.chips.missing,.seg.missing,.photo-box.missing{background:var(--miss);border-color:var(--miss-line);color:var(--miss-ink)}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.hint b{color:var(--ink)}
+
+.seg{display:flex;flex-wrap:wrap;gap:6px;padding:4px;border:1.5px solid var(--line);border-radius:9px;width:fit-content;max-width:100%}
+.seg button{border:0;background:transparent;padding:7px 14px;border-radius:6px;cursor:pointer;font-weight:700}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:8px;border:1.5px dashed var(--line);border-radius:9px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;cursor:pointer;font-size:13.5px;text-align:left;line-height:1.3}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chip[aria-pressed=true]::before{content:"✓ "}
+.chip:disabled{opacity:.45;cursor:not-allowed}
+.counter{font-size:12.5px;font-weight:700;color:var(--muted)}
+
+.rep{display:grid;gap:10px}
+.row{border:1px solid var(--line);border-radius:9px;padding:12px;background:var(--sunk);display:grid;gap:10px;min-width:0}
+.row-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.row-head span{font-weight:700;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.btn{border:1.5px solid var(--accent);background:transparent;color:var(--accent);padding:7px 13px;border-radius:7px;font-weight:700;cursor:pointer;width:fit-content}
+.btn:hover{background:var(--accent-soft)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.small{padding:4px 10px;font-size:13px}
+.btn.danger{border-color:#B3261E;color:#B3261E}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn.danger{border-color:#F28B82;color:#F28B82} }
+:root[data-theme="dark"] .btn.danger{border-color:#F28B82;color:#F28B82}
+.btn.big{padding:12px 20px;font-size:16px}
+.inline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.lang-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:center}
+.int-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+
+.photo-box{display:flex;gap:12px;align-items:center;flex-wrap:wrap;border:1.5px dashed var(--line);border-radius:9px;padding:10px}
+.photo-box img{width:66px;height:88px;border-radius:6px;background:var(--line)}
+
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.sw{width:38px;height:38px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1.5px var(--line);cursor:pointer;padding:0}
+.sw[aria-pressed=true]{box-shadow:0 0 0 3px var(--accent)}
+.styles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.style-opt{border:1.5px solid var(--line);border-radius:9px;background:var(--surface);padding:10px;cursor:pointer;display:grid;gap:6px;text-align:left}
+.style-opt[aria-pressed=true]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.style-opt svg{width:100%;height:auto}
+.style-opt span{font-weight:700;font-size:13.5px}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px;border-radius:8px;background:var(--sunk);border:1px solid var(--line)}
+.msg{font-size:14px;padding:10px 12px;border-radius:8px;margin:0}
+.msg.warn{background:var(--miss);color:var(--miss-ink)}
+.msg.good{background:var(--ok-soft);color:var(--ok)}
+
+/* Colonne aperçu */
+.preview-col{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:grid;gap:10px;min-width:0}
+@media (max-width:980px){.preview-col{position:static}}
+.pv-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.pv-head h2{margin:0;font-family:var(--f-display);font-size:19px;font-weight:800}
+.status{font-weight:700;font-size:13.5px;padding:5px 12px;border-radius:99px;background:var(--miss);color:var(--miss-ink)}
+.status.ok{background:var(--ok-soft);color:var(--ok)}
+.frame{position:relative;width:100%;overflow:hidden;border-radius:4px;box-shadow:0 1px 2px rgba(10,20,40,.12),0 8px 28px rgba(10,20,40,.14)}
+.frame .cv{position:absolute;top:0;left:0;transform-origin:top left}
+.pv-foot{font-size:12.5px;color:var(--muted);margin:0}
+
+/* ===== Le CV (papier : toujours clair) ===== */
+.cv{width:794px;min-height:1123px;background:#FFFFFF;color:#1E2228;font-family:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  --c:#1D3557;--on:#FFFFFF;--t:#1D3557;--tint:#E8EDF3;font-size:calc(13.4px * var(--s,1));line-height:1.38}
+.cv *{box-sizing:border-box}
+.cv mark{background:#FFE45C;color:#3A3000;padding:0 .25em;border-radius:2px;font-weight:600}
+.cv-name{font-family:Archivo,"Arial Black",sans-serif;font-weight:800;font-size:2.35em;line-height:1.05;margin:0;letter-spacing:-.01em}
+.cv-name .last{text-transform:uppercase}
+.cv-title{font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:1.12em;margin:.35em 0 0}
+.cv-sub{margin:.2em 0 0;font-size:.98em;opacity:.85}
+.cv-h{font-family:Archivo,Arial,sans-serif;font-weight:800;font-size:.98em;text-transform:uppercase;letter-spacing:.09em;margin:0 0 .55em;color:var(--t);padding-bottom:.3em;border-bottom:2px solid var(--c)}
+.cv-sec{margin-bottom:1.15em}
+.cv-sec:last-child{margin-bottom:0}
+.cv-p{margin:0}
+.cv-item{display:grid;grid-template-columns:7.2em 1fr;gap:.2em .9em;margin-bottom:.7em}
+.cv-item:last-child{margin-bottom:0}
+.cv-when{font-weight:700;color:var(--t);font-size:.95em}
+.cv-what{font-weight:700}
+.cv-where{font-size:.95em;color:#4A5260}
+.cv-tag{display:inline-block;font-size:.78em;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--tint);color:var(--t);padding:.05em .5em;border-radius:3px;margin-right:.4em;vertical-align:.08em}
+.cv-ul{margin:.25em 0 0;padding:0;list-style:none}
+.cv-ul li{position:relative;padding-left:.95em;margin-bottom:.12em}
+.cv-ul li::before{content:"";position:absolute;left:.1em;top:.6em;width:.36em;height:.36em;border-radius:50%;background:var(--c)}
+.cv-contact{margin:0;padding:0;list-style:none;display:grid;gap:.35em}
+.cv-contact li{display:grid;grid-template-columns:1.3em 1fr;gap:.4em;align-items:start;word-break:break-word}
+.cv-contact svg{width:1.05em;height:1.05em;margin-top:.15em}
+.cv-photo{width:7.6em;height:10.13em;border-radius:4px;display:block}
+.cv-photo.ph{background:#FFE45C;display:grid;place-items:center;text-align:center;font-size:.85em;color:#3A3000;font-weight:600;padding:.5em}
+.cv-pills{display:flex;flex-wrap:wrap;gap:.35em}
+.cv-pill{padding:.12em .6em;border-radius:99px;background:var(--tint);color:var(--t);font-weight:600;font-size:.95em}
+
+/* Style 1 : bandeau latéral */
+.st-bandeau{display:grid;grid-template-columns:34% 66%}
+.st-bandeau .side{background:var(--c);color:var(--on);padding:2.2em 1.6em}
+.st-bandeau .side .cv-h{color:var(--on);border-color:var(--on)}
+.st-bandeau .side .cv-pill{background:rgba(255,255,255,.18);color:var(--on)}
+.st-bandeau.pastel .side .cv-pill{background:rgba(255,255,255,.55)}
+.st-bandeau .side .cv-ul li::before{background:var(--on)}
+.st-bandeau .side .cv-photo{margin:0 auto 1.4em;border:3px solid rgba(255,255,255,.7)}
+.st-bandeau .main{padding:2.2em 2em}
+.st-bandeau .head{margin-bottom:1.5em}
+.st-bandeau .head .cv-name{color:var(--t)}
+
+/* Style 2 : en-tête */
+.st-entete .top{background:var(--c);color:var(--on);padding:2em 2.2em;display:flex;gap:1.6em;align-items:center}
+.st-entete .top .grow{flex:1;min-width:0}
+.st-entete .top .cv-contact{grid-template-columns:1fr 1fr;margin-top:1em;column-gap:1.2em}
+.st-entete .body{display:grid;grid-template-columns:60% 40%;padding:1.8em 2.2em 2em;column-gap:0}
+.st-entete .body .l{padding-right:1.6em}
+.st-entete .body .r{padding-left:1.6em;border-left:1.5px solid var(--tint)}
+.st-entete .cv-photo{border:3px solid rgba(255,255,255,.7);flex:none}
+
+/* Style 3 : épuré */
+.st-epure{padding:2.4em 2.6em;border-top:1.2em solid var(--c)}
+.st-epure .top{display:flex;gap:1.6em;align-items:flex-start;margin-bottom:1.3em}
+.st-epure .top .grow{flex:1;min-width:0}
+.st-epure .cv-name{color:var(--t)}
+.st-epure .top .cv-contact{grid-template-columns:1fr 1fr;margin-top:.9em;column-gap:1.2em}
+.st-epure .cols{display:grid;grid-template-columns:1fr 1fr;column-gap:2em}
+.st-epure .cv-h{border-bottom-width:1px}
+</style>
+
+<div class="wrap">
+  <header class="school">
+    <div class="mono" aria-hidden="true">CV</div>
+    <p><strong>D’après l’outil conçu par Mme Isabelle Léger</strong><br>
+    professeure d’Éco-Gestion au lycée des métiers Marie Marvingt (Tomblaine)<span id="author-line"></span></p>
+  </header>
+
+  <section class="intro">
+    <h1>Mon CV pour la PFMP</h1>
+    <p>Remplis les étapes à gauche : ton CV se construit tout seul à droite. Tout ce qui est <mark>surligné en jaune</mark> manque encore : <b>tous les champs sont obligatoires</b>. Dès qu’il n’y a plus de jaune, tu peux enregistrer ton CV en PDF.</p>
+  </section>
+
+  <div class="layout">
+    <div class="steps">
+
+      <!-- 1 -->
+      <section class="step" id="step1">
+        <h2><span class="num">1</span>Mes coordonnées<span class="done" data-step="1"></span></h2>
+        <div class="grid">
+          <div class="field"><label for="f-prenom">Prénom</label><input type="text" id="f-prenom" data-k="prenom" autocomplete="given-name"></div>
+          <div class="field"><label for="f-nom">Nom</label><input type="text" id="f-nom" data-k="nom" autocomplete="family-name"></div>
+          <div class="field full"><label for="f-adresse">Adresse (numéro et rue)</label><input type="text" id="f-adresse" data-k="adresse" autocomplete="street-address"></div>
+          <div class="field"><label for="f-cp">Code postal</label><input type="text" id="f-cp" data-k="cp" inputmode="numeric" maxlength="5" autocomplete="postal-code"></div>
+          <div class="field"><label for="f-ville">Ville</label><input type="text" id="f-ville" data-k="ville" autocomplete="address-level2"></div>
+          <div class="field"><label for="f-tel">Téléphone</label><input type="tel" id="f-tel" data-k="tel" autocomplete="tel" placeholder="06 12 34 56 78"></div>
+          <div class="field"><label for="f-email">Adresse e-mail</label><input type="email" id="f-email" data-k="email" autocomplete="email" placeholder="prenom.nom@…"></div>
+          <div class="field"><label for="f-naissance">Date de naissance</label><input type="date" id="f-naissance" data-k="naissance"></div>
+          <div class="field"><span class="lab">Accords dans le CV (ex. : motivé / motivée)</span>
+            <div class="seg" id="g-genre" role="group" aria-label="Accords">
+              <button type="button" data-seg="genre" data-val="f" aria-pressed="false">Au féminin</button>
+              <button type="button" data-seg="genre" data-val="m" aria-pressed="false">Au masculin</button>
+            </div></div>
+          <div class="field full"><span class="lab">Je mets une photo sur mon CV</span>
+            <div class="seg" id="g-photoOn" role="group" aria-label="Photo">
+              <button type="button" data-seg="photoOn" data-val="oui" aria-pressed="false">Oui</button>
+              <button type="button" data-seg="photoOn" data-val="non" aria-pressed="false">Non</button>
+            </div></div>
+          <div class="field full" id="photo-field" hidden>
+            <div class="photo-box" id="g-photo">
+              <img id="photo-thumb" alt="Ma photo" hidden>
+              <label class="btn small" for="f-photo">Choisir ma photo</label>
+              <input type="file" id="f-photo" accept="image/*" hidden>
+              <button type="button" class="btn small danger" id="photo-remove" hidden>Retirer la photo</button>
+            </div>
+          </div>
+        </div>
+        <p class="hint">Tu choisis : la photo n’est pas exigée sur un CV. Si tu en mets une, choisis une photo sérieuse, de face, sur un fond clair. Utilise une adresse e-mail sérieuse, avec ton prénom et ton nom de préférence.</p>
+      </section>
+
+      <!-- 2 -->
+      <section class="step" id="step2">
+        <h2><span class="num">2</span>Ma formation et mes diplômes<span class="done" data-step="2"></span></h2>
+        <div class="grid">
+          <div class="field"><label for="f-niveau">Mon niveau</label>
+            <select id="f-niveau" data-k="niveau"></select></div>
+          <div class="field"><label for="f-filiere">Ma filière</label>
+            <select id="f-filiere" data-k="filiere"></select></div>
+          <div class="field full"><label for="f-formationNom">Nom complet de ma formation</label>
+            <input type="text" id="f-formationNom" data-k="formationNom">
+            <p class="hint">Rempli automatiquement d’après ta filière. Tu peux le corriger si ton professeur te donne un autre intitulé.</p></div>
+          <div class="field"><label for="f-lyceeNom">Nom du lycée (sans le mot « lycée »)</label><input type="text" id="f-lyceeNom" data-k="lyceeNom"></div>
+          <div class="field"><label for="f-lyceeVille">Ville du lycée</label><input type="text" id="f-lyceeVille" data-k="lyceeVille"></div>
+          <div class="field"><label for="f-annee">Année scolaire</label><input type="text" id="f-annee" data-k="annee" placeholder="2026-2027"></div>
+        </div>
+        <div class="field"><span class="lab">Mes formations précédentes</span>
+          <div class="rep" id="rep-prev"></div>
+          <button type="button" class="btn small" data-add="prevForms">+ Ajouter une formation</button>
+          <p class="hint">Par exemple ta classe de 3e au collège, ou une autre seconde.</p></div>
+        <div class="grid">
+          <div class="field"><label for="f-dnb">Diplôme national du brevet (DNB)</label>
+            <select id="f-dnb" data-k="dnb">
+              <option value="">Choisis…</option>
+              <option value="ok">Obtenu</option>
+              <option value="ab">Obtenu, mention Assez bien</option>
+              <option value="b">Obtenu, mention Bien</option>
+              <option value="tb">Obtenu, mention Très bien</option>
+              <option value="non">Non obtenu</option>
+            </select></div>
+          <div class="field" id="dnb-annee-field"><label for="f-dnbAnnee">Année d’obtention</label><input type="text" id="f-dnbAnnee" data-k="dnbAnnee" inputmode="numeric" maxlength="4" placeholder="2025"></div>
+        </div>
+        <p class="hint">Si le brevet n’est pas obtenu, il n’apparaîtra pas sur ton CV.</p>
+        <div class="field"><span class="lab">Mes autres diplômes obtenus</span>
+          <div class="rep" id="rep-dipl"></div>
+          <button type="button" class="btn small" data-add="diplomes">+ Ajouter un diplôme</button>
+          <p class="hint">CAP, baccalauréat professionnel ou autre diplôme. N’ajoute que les diplômes que tu as déjà obtenus.</p></div>
+        <div class="field"><label for="f-attestations">Attestations et certifications obtenues (ou « Aucune pour l’instant »)</label>
+          <input type="text" id="f-attestations" data-k="attestations" placeholder="ASSR 2, PSC1, SST, habilitation électrique…">
+          <div class="inline" id="att-sugg"></div></div>
+      </section>
+
+      <!-- 3 -->
+      <section class="step" id="step3">
+        <h2><span class="num">3</span>Mes expériences<span class="done" data-step="3"></span></h2>
+        <div class="rep" id="rep-exp"></div>
+        <button type="button" class="btn small" data-add="experiences">+ Ajouter une expérience</button>
+        <p class="hint">Stage d’observation de 3e, PFMP, job d’été, bénévolat, aide dans un club ou une association : tout compte. Les missions proposées s’adaptent à ton niveau et à ta filière (étape 2).</p>
+      </section>
+
+      <!-- 4 -->
+      <section class="step" id="step4">
+        <h2><span class="num">4</span>Mon profil et mes compétences<span class="done" data-step="4"></span></h2>
+        <div class="field"><label for="f-presentation">Ma phrase de présentation</label>
+          <textarea id="f-presentation" data-k="presentation" maxlength="320"></textarea>
+          <div class="inline"><button type="button" class="btn small" id="pres-help">M’aider à écrire ma phrase</button><span class="hint" id="pres-count"></span></div></div>
+        <div class="field"><span class="lab">Mes qualités (choisis-en 2 ou 3) <span class="counter" id="cnt-qualites"></span></span>
+          <div class="chips" id="g-qualites"></div></div>
+        <div class="field"><span class="lab">Mes compétences (choisis-en 3 à 6) <span class="counter" id="cnt-competences"></span></span>
+          <div class="chips" id="g-competences"></div>
+          <p class="hint">La liste s’adapte à ton niveau et à ta filière (étape 2).</p></div>
+        <div class="field"><span class="lab">Informatique (au moins une)</span>
+          <div class="chips" id="g-info"></div></div>
+        <div class="field"><span class="lab">Langues</span>
+          <div class="rep" id="rep-lang"></div>
+          <button type="button" class="btn small" data-add="langues">+ Ajouter une langue</button></div>
+      </section>
+
+      <!-- 5 -->
+      <section class="step" id="step5">
+        <h2><span class="num">5</span>Mobilité et centres d’intérêt<span class="done" data-step="5"></span></h2>
+        <div class="field"><span class="lab">Comment je me déplace (au moins un choix)</span>
+          <div class="chips" id="g-mobilite"></div></div>
+        <div class="field"><span class="lab">Mes centres d’intérêt (au moins un, sois précis)</span>
+          <div class="rep" id="rep-int"></div>
+          <button type="button" class="btn small" data-add="interets">+ Ajouter un centre d’intérêt</button>
+          <p class="hint">Évite « sortir avec mes amis » ou « jeux vidéo » tout seuls : précise ce que tu fais vraiment (ex. : « Handball en club depuis 4 ans, à l’AS Pont-à-Mousson »), cela montre ta personnalité.</p></div>
+      </section>
+
+      <!-- 6 -->
+      <section class="step" id="step6">
+        <h2><span class="num">6</span>Couleur, style et enregistrement en PDF</h2>
+        <div class="field"><span class="lab">Couleur de mon CV</span>
+          <p class="hint">Couleurs soutenues</p><div class="swatches" id="sw-soutenues"></div>
+          <p class="hint">Couleurs pastel</p><div class="swatches" id="sw-pastel"></div></div>
+        <div class="field"><span class="lab">Style de mon CV</span>
+          <div class="styles" id="styles"></div>
+          <p class="hint">La taille du texte et les espaces s’ajustent tout seuls pour que ton CV remplisse bien une page, qu’il soit court ou long.</p></div>
+        <div class="inline">
+          <button type="button" class="btn primary big" id="dl">Télécharger mon CV en PDF</button>
+          <button type="button" class="btn" id="reset">Recommencer à zéro</button>
+          <button type="button" class="btn" id="example">Voir un exemple rempli</button>
+        </div>
+        <div class="confirm" id="confirm" hidden>
+          <span id="confirm-text">Tout effacer ? Ton CV sera vidé.</span>
+          <button type="button" class="btn small danger" id="confirm-yes">Oui, tout effacer</button>
+          <button type="button" class="btn small" id="confirm-no">Annuler</button>
+        </div>
+        <p class="msg" id="dl-msg" hidden></p>
+        <p class="hint">Le bouton crée directement ton CV en PDF : une seule page A4, avec ses couleurs, sans rien à régler. Pour l’imprimer sur papier, ouvre le PDF téléchargé et imprime-le depuis ce fichier.</p>
+        <p class="hint"><b>Ton travail est gardé sur cet ordinateur, dans ce navigateur.</b> Sur un ordinateur partagé du lycée, pense à cliquer sur « Recommencer à zéro » quand tu as fini.</p>
+      </section>
+    </div>
+
+    <aside class="preview-col" aria-label="Aperçu du CV">
+      <div class="pv-head"><h2>Aperçu de mon CV</h2><span class="status" id="status"></span></div>
+      <div class="frame" id="frame"><div class="cv" id="cv"></div></div>
+      <p class="pv-foot">Format A4 · une page</p>
+    </aside>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/* ---------- Réglages du lycée (modifiables) ---------- */
+const AUTEUR = "Mme Marie FRISON, professeure d’Éco-Gestion"; // ex. : "Mme DUPONT, professeure d’Éco-Gestion" — laisser vide pour ne rien afficher
+const LYCEE_NOM = "Jean Hanzelet", LYCEE_VILLE = "Pont-à-Mousson";
+const STORE_KEY = "hanzelet-cv-pfmp-v1";
+
+/* ---------- Données ---------- */
+const LEVELS = {
+  "2bp":{label:"Seconde baccalauréat professionnel",short:"Seconde bac pro",line:"Classe de Seconde",kind:"bp",rank:1},
+  "1bp":{label:"Première baccalauréat professionnel",short:"Première bac pro",line:"Classe de Première",kind:"bp",rank:2},
+  "tbp":{label:"Terminale baccalauréat professionnel",short:"Terminale bac pro",line:"Classe de Terminale",kind:"bp",rank:3},
+  "1cap":{label:"1re année de CAP",short:"1re année de CAP",line:"1re année",kind:"cap",rank:1},
+  "2cap":{label:"2e année de CAP",short:"2e année de CAP",line:"2e année",kind:"cap",rank:2}
+};
+const FILIERES = {
+  melec:{label:"MELEC – Électricité et environnements connectés",sigle:"MELEC",dom:"melec",levels:["2bp","1bp","tbp"],
+    full:"Baccalauréat professionnel Métiers de l’électricité et de ses environnements connectés (MELEC)",
+    seconde:"Seconde professionnelle Métiers des transitions numérique et énergétique",metier:"les métiers de l’électricité"},
+  mspc:{label:"MSPC – Maintenance des systèmes de production connectés",sigle:"MSPC",dom:"mspc",levels:["2bp","1bp","tbp"],
+    full:"Baccalauréat professionnel Maintenance des systèmes de production connectés (MSPC)",metier:"la maintenance industrielle"},
+  mrc:{label:"Métiers de la relation client (commerce et vente)",sigle:"Relation client",dom:"com",levels:["2bp"],
+    full:"Baccalauréat professionnel Métiers du commerce et de la vente",seconde:"Seconde professionnelle Métiers de la relation client",metier:"les métiers du commerce et de la vente"},
+  mcva:{label:"MCV option A – Animation et gestion de l’espace commercial",sigle:"MCV A",dom:"comA",levels:["1bp","tbp"],
+    full:"Baccalauréat professionnel Métiers du commerce et de la vente, option A : animation et gestion de l’espace commercial",metier:"la vente en magasin"},
+  mcvb:{label:"MCV option B – Prospection clientèle et valorisation de l’offre",sigle:"MCV B",dom:"comB",levels:["1bp","tbp"],
+    full:"Baccalauréat professionnel Métiers du commerce et de la vente, option B : prospection clientèle et valorisation de l’offre commerciale",metier:"la vente et la relation client"},
+  epc:{label:"CAP Équipier polyvalent du commerce",sigle:"EPC",dom:"epc",levels:["1cap","2cap"],
+    full:"CAP Équipier polyvalent du commerce",metier:"les métiers du commerce"}
+};
+const COM1 = ["Accueillir et renseigner le client","Mettre en rayon et faire le facing","Étiqueter les produits et contrôler les prix","Participer à la réception des marchandises","Tenir une caisse et encaisser","Garder le rayon propre et attractif"];
+const COMP = {
+  melec:{1:["Lire un schéma électrique simple","Réaliser un câblage en respectant les règles de sécurité","Utiliser l’outillage d’électricien","Poser goulottes, conduits et boîtiers","Raccorder prises, interrupteurs et éclairages","Appliquer la prévention du risque électrique","Ranger et entretenir mon poste de travail"],
+         2:["Câbler une armoire ou un tableau électrique","Faire des mesures au multimètre (tension, intensité, continuité)","Mettre en service une installation","Participer à un diagnostic de panne","Installer un réseau informatique ou domotique (VDI)","Rédiger un compte rendu d’intervention","Échanger avec le client sur le chantier"]},
+  mspc:{1:["Lire un plan ou un schéma technique","Utiliser l’outillage de mécanique","Démonter et remonter un sous-ensemble mécanique","Réaliser un graissage ou un contrôle de niveau","Appliquer les consignes de sécurité (consignation, EPI)","Ranger et nettoyer la zone d’intervention"],
+        2:["Réaliser une maintenance préventive selon une gamme","Participer au diagnostic d’une panne","Remplacer un composant défectueux","Effectuer des mesures et des réglages","Remettre un équipement en service","Rédiger un compte rendu d’intervention","Proposer une amélioration"]},
+  com:{1:COM1,2:[]},
+  comA:{1:COM1,2:["Conseiller le client et conclure une vente","Participer à l’animation de l’espace de vente","Mettre en place une opération promotionnelle","Participer à un inventaire","Suivre les ventes et les stocks","Traiter une réclamation client"]},
+  comB:{1:COM1,2:["Prospecter de nouveaux clients (téléphone, terrain)","Présenter et valoriser une offre commerciale","Conduire un entretien de vente","Mettre à jour un fichier clients","Préparer un rendez-vous client","Assurer le suivi après la vente"]},
+  epc:{1:["Réceptionner et contrôler les marchandises","Mettre en rayon et faire le facing","Étiqueter les produits et vérifier les prix","Accueillir et renseigner le client","Encaisser et tenir une caisse","Préparer des commandes (drive, retrait en magasin)","Garder le rayon propre et rangé"],
+       2:["Participer à un inventaire","Lutter contre la démarque","Conseiller le client sur un produit"]}
+};
+const GENERAL_MISSIONS = ["Découvrir les métiers de l’entreprise","Accueillir le public","Aider à l’organisation d’un événement","Travailler en équipe","Ranger et entretenir le matériel","Respecter les horaires et les consignes"];
+const EXP_TYPES = [["obs3","Stage d’observation de 3e"],["pfmp","PFMP"],["job","Job d’été"],["benevolat","Bénévolat"],["club","Club ou association"],["autre","Autre expérience"]];
+const QUALITES = [["ponctuel","Ponctuel","Ponctuelle"],["motive","Motivé","Motivée"],["serieux","Sérieux","Sérieuse"],["curieux","Curieux","Curieuse"],["dynamique","Dynamique","Dynamique"],["souriant","Souriant","Souriante"],["rigoureux","Rigoureux","Rigoureuse"],["autonome","Autonome","Autonome"],["organise","Organisé","Organisée"],["patient","Patient","Patiente"],["poli","Poli","Polie"],["minutieux","Minutieux","Minutieuse"],["ecoute","À l’écoute","À l’écoute"],["respectueux","Respectueux","Respectueuse"],["equipe","Esprit d’équipe","Esprit d’équipe"],["volontaire","Volontaire","Volontaire"],["calme","Calme","Calme"],["investi","Investi","Investie"]];
+const INFO_BASE = ["Traitement de texte (Word, Docs)","Tableur (Excel, Sheets)","Diaporama (PowerPoint)","Messagerie électronique","Recherche sur Internet","Certification Pix"];
+const INFO_DOM = {melec:["Logiciel de schéma électrique"],mspc:["Logiciel de GMAO","Lecture de plans numériques"],com:["Logiciel de caisse"],comA:["Logiciel de caisse","Gestion des stocks"],comB:["Logiciel de gestion clients (CRM)","Réseaux sociaux professionnels"],epc:["Logiciel de caisse","Terminal de gestion des stocks"]};
+const LANGS = ["Français","Anglais","Allemand","Espagnol","Italien","Portugais","Arabe","Turc","Polonais","Autre"];
+const LANG_LEVELS = ["Langue maternelle","Courant","Intermédiaire (B1)","Scolaire (A2)","Notions"];
+const MOBILITE = [["pied","À pied"],["velo","Vélo"],["trott","Trottinette"],["tc","Transports en commun (bus, train)"],["scooter","Scooter (permis AM)"],["ac","Conduite accompagnée en cours"],["pb","Permis B"],["voiture","Véhicule personnel"]];
+const ATT_SUGG = {all:["ASSR 2","PSC1","SST","Certification Pix"],melec:["Habilitation électrique B0 H0V","Habilitation électrique BR"],mspc:["Habilitation électrique BS","Habilitation électrique BR"]};
+const COLORS = {
+  soutenues:[["marine","Bleu marine","#1D3557"],["petrole","Bleu pétrole","#0F5C6E"],["sapin","Vert sapin","#1F5A45"],["bordeaux","Bordeaux","#7B2238"],["prune","Prune","#4E2A63"],["brique","Brique","#9A3B1E"],["anthracite","Anthracite","#2F353B"]],
+  pastel:[["ciel","Bleu ciel","#A9CBEA","#1F4E79"],["eau","Vert d’eau","#AED9C6","#1E5A44"],["rose","Rose poudré","#EBC0CB","#7A2E44"],["lavande","Lavande","#CFC3EA","#47336E"],["peche","Pêche","#F5CBAE","#8A4420"],["sable","Sable","#E8DCB5","#5E4B14"]]
+};
+const STYLES = [["bandeau","Bandeau"],["entete","En-tête"],["epure","Épuré"]];
+
+/* ---------- État ---------- */
+function schoolYear(){const d=new Date(),y=d.getFullYear();return d.getMonth()>=7?`${y}-${y+1}`:`${y-1}-${y}`}
+const newExp=()=>({type:"",periode:"",entreprise:"",ville:"",poste:"",missions:[],autre:""});
+function blank(){return {prenom:"",nom:"",adresse:"",cp:"",ville:"",tel:"",email:"",naissance:"",genre:"",photoOn:"",photo:"",
+  niveau:"",filiere:"",formationNom:"",formationAuto:"",lyceeNom:LYCEE_NOM,lyceeVille:LYCEE_VILLE,annee:schoolYear(),
+  prevForms:[{annee:"",intitule:"",etab:"",ville:""}],dnb:"",dnbAnnee:"",diplomes:[],attestations:"",
+  experiences:[newExp()],presentation:"",qualites:[],competences:[],info:[],langues:[{langue:"",niveau:""}],
+  mobilite:[],interets:[""],couleur:"marine",style:"bandeau"}}
+function example(){return {prenom:"Inès",nom:"Exemple",adresse:"12 rue de l’Exemple",cp:"54700",ville:"Pont-à-Mousson",tel:"06 00 00 00 00",email:"ines.exemple@email.fr",naissance:"2010-03-14",genre:"f",photoOn:"non",photo:"",
+  niveau:"1bp",filiere:"melec",formationNom:FILIERES.melec.full,formationAuto:FILIERES.melec.full,lyceeNom:LYCEE_NOM,lyceeVille:LYCEE_VILLE,annee:schoolYear(),
+  prevForms:[{annee:"2025-2026",intitule:"Seconde professionnelle Métiers des transitions numérique et énergétique",etab:"Lycée Jean Hanzelet",ville:"Pont-à-Mousson"},{annee:"2024-2025",intitule:"Classe de 3e",etab:"Collège de l’Exemple",ville:"Pont-à-Mousson"}],
+  dnb:"ab",dnbAnnee:"2025",diplomes:[],attestations:"ASSR 2, Habilitation électrique B0 H0V",
+  experiences:[{type:"pfmp",periode:"Mai–juin 2026 (4 semaines)",entreprise:"Entreprise d’électricité (exemple)",ville:"Pont-à-Mousson",poste:"Aide-électricienne",missions:["Poser goulottes, conduits et boîtiers","Raccorder prises, interrupteurs et éclairages","Appliquer la prévention du risque électrique"],autre:""},
+               {type:"obs3",periode:"Décembre 2024 (1 semaine)",entreprise:"Commune (exemple) – services techniques",ville:"Pont-à-Mousson",poste:"Stagiaire",missions:["Découvrir les métiers de l’entreprise","Ranger et entretenir le matériel"],autre:""}],
+  presentation:"Élève de Première bac pro MELEC, motivée et curieuse, je recherche une PFMP pour progresser en câblage et découvrir le travail sur chantier.",
+  qualites:["motive","ponctuel","minutieux"],competences:["Lire un schéma électrique simple","Réaliser un câblage en respectant les règles de sécurité","Câbler une armoire ou un tableau électrique","Faire des mesures au multimètre (tension, intensité, continuité)"],
+  info:["Traitement de texte (Word, Docs)","Logiciel de schéma électrique"],langues:[{langue:"Français",niveau:"Langue maternelle"},{langue:"Anglais",niveau:"Scolaire (A2)"}],
+  mobilite:["velo","tc"],interets:["Handball en club depuis 4 ans","Bricolage avec mon père (rénovation d’une chambre)"],couleur:"petrole",style:"bandeau"}}
+
+function load(){try{const r=localStorage.getItem(STORE_KEY);if(r){return Object.assign(blank(),JSON.parse(r))}}catch(e){}return null}
+let saveT;function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(STORE_KEY,JSON.stringify(S))}catch(e){}},250)}
+let S = load() || blank();
+
+/* ---------- Outils ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const fem=()=>S.genre==="f";
+const ph=(v,label)=>v&&String(v).trim()?esc(v):`<mark>${esc(label)}</mark>`;
+const lvl=()=>LEVELS[S.niveau], fil=()=>FILIERES[S.filiere];
+function qLabel(id){const q=QUALITES.find(x=>x[0]===id);return q?(fem()?q[2]:q[1]):id}
+function compList(){const f=fil(),l=lvl();if(!f)return [];const c=COMP[f.dom];return [...c[1],...((l&&l.rank>=2)?c[2]:[])]}
+function infoList(){const f=fil();return [...INFO_BASE,...(f?INFO_DOM[f.dom]||[]:[])]}
+function missionList(exp){const comp=compList();const base=exp.type==="pfmp"?comp:[...GENERAL_MISSIONS,...comp.slice(0,4)];return [...new Set([...base,...exp.missions.filter(m=>!base.includes(m))])]}
+function autoFormation(){const f=fil(),l=lvl();if(!f)return "";if(l&&l.rank===1&&l.kind==="bp"&&f.seconde)return f.seconde;return f.full}
+function fmtDate(iso){if(!iso)return "";const [y,m,d]=iso.split("-");return `${d}/${m}/${y}`}
+function age(iso){if(!iso)return null;const b=new Date(iso),n=new Date();let a=n.getFullYear()-b.getFullYear();if(n.getMonth()<b.getMonth()||(n.getMonth()===b.getMonth()&&n.getDate()<b.getDate()))a--;return a>0&&a<99?a:null}
+function colorOf(id){for(const k of ["soutenues","pastel"])for(const c of COLORS[k])if(c[0]===id)return {pastel:k==="pastel",main:c[2],title:c[3]||c[2]};return {pastel:false,main:"#1D3557",title:"#1D3557"}}
+function mix(hex,amt){const n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;const f=v=>Math.round(v+(255-v)*amt).toString(16).padStart(2,"0");return "#"+f(r)+f(g)+f(b)}
+
+/* ---------- Champs obligatoires ---------- */
+function missingList(){
+  const m=[],req=(ok,id,label,step)=>{if(!ok)m.push({id,label,step})},has=v=>v&&String(v).trim();
+  req(has(S.prenom),"f-prenom","Prénom",1);req(has(S.nom),"f-nom","Nom",1);req(has(S.adresse),"f-adresse","Adresse",1);
+  req(/^\d{5}$/.test(S.cp.trim()),"f-cp","Code postal (5 chiffres)",1);req(has(S.ville),"f-ville","Ville",1);
+  req(S.tel.replace(/\D/g,"").length>=10,"f-tel","Téléphone (10 chiffres)",1);req(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email.trim()),"f-email","Adresse e-mail valide",1);
+  req(has(S.naissance),"f-naissance","Date de naissance",1);req(S.genre,"g-genre","Accords",1);req(S.photoOn,"g-photoOn","Photo oui ou non",1);
+  if(S.photoOn==="oui")req(S.photo,"g-photo","Ta photo",1);
+  req(S.niveau,"f-niveau","Niveau",2);req(S.filiere,"f-filiere","Filière",2);req(has(S.formationNom),"f-formationNom","Nom de la formation",2);
+  req(has(S.lyceeNom),"f-lyceeNom","Nom du lycée",2);req(has(S.lyceeVille),"f-lyceeVille","Ville du lycée",2);req(has(S.annee),"f-annee","Année scolaire",2);
+  if(!S.prevForms.length)m.push({id:"rep-prev",label:"Une formation précédente",step:2});
+  S.prevForms.forEach((p,i)=>["annee","intitule","etab","ville"].forEach(k=>req(has(p[k]),`pf-${i}-${k}`,"Formation précédente",2)));
+  req(S.dnb,"f-dnb","Brevet",2);if(S.dnb&&S.dnb!=="non")req(/^\d{4}$/.test(S.dnbAnnee.trim()),"f-dnbAnnee","Année du brevet",2);
+  S.diplomes.forEach((p,i)=>["annee","intitule"].forEach(k=>req(has(p[k]),`dp-${i}-${k}`,"Diplôme",2)));
+  req(has(S.attestations),"f-attestations","Attestations",2);
+  if(!S.experiences.length)m.push({id:"rep-exp",label:"Une expérience",step:3});
+  S.experiences.forEach((e,i)=>{["type","periode","entreprise","ville","poste"].forEach(k=>req(has(e[k]),`ex-${i}-${k}`,"Expérience",3));
+    req(e.missions.length||has(e.autre),`ex-${i}-missions`,"Missions",3)});
+  req(has(S.presentation),"f-presentation","Phrase de présentation",4);
+  req(S.qualites.length>=2,"g-qualites","2 ou 3 qualités",4);req(S.competences.length>=3,"g-competences","3 à 6 compétences",4);
+  req(S.info.length>=1,"g-info","Informatique",4);
+  if(!S.langues.length)m.push({id:"rep-lang",label:"Une langue",step:4});
+  S.langues.forEach((l,i)=>{req(l.langue,`lg-${i}-langue`,"Langue",4);req(l.niveau,`lg-${i}-niveau`,"Niveau de langue",4)});
+  req(S.mobilite.length>=1,"g-mobilite","Mobilité",5);
+  if(!S.interets.length)m.push({id:"rep-int",label:"Un centre d’intérêt",step:5});
+  S.interets.forEach((t,i)=>req(has(t),`in-${i}`,"Centre d’intérêt",5));
+  return m;
+}
+function paintMissing(){
+  const m=missingList();
+  document.querySelectorAll(".missing").forEach(e=>e.classList.remove("missing"));
+  m.forEach(x=>{const el=document.getElementById(x.id);if(el)el.classList.add("missing")});
+  for(let s=1;s<=5;s++){const n=m.filter(x=>x.step===s).length,b=document.querySelector(`.done[data-step="${s}"]`);
+    b.textContent=n?`${n} à compléter`:"Complet ✓";b.classList.toggle("ok",!n)}
+  const st=$("#status");st.textContent=m.length?`Il reste ${m.length} élément${m.length>1?"s":""} à compléter`:"CV complet ✓";st.classList.toggle("ok",!m.length);
+  return m;
+}
+
+/* ---------- Rendu du formulaire ---------- */
+function fillSelect(sel,opts,val){sel.innerHTML=`<option value="">Choisis…</option>`+opts.map(([v,l])=>`<option value="${esc(v)}"${v===val?" selected":""}>${esc(l)}</option>`).join("")}
+function renderSelects(){
+  fillSelect($("#f-niveau"),Object.entries(LEVELS).map(([k,v])=>[k,v.label]),S.niveau);
+  const l=S.niveau;const fl=Object.entries(FILIERES).filter(([k,f])=>!l||f.levels.includes(l)).map(([k,f])=>[k,f.label]);
+  if(S.filiere&&!fl.find(x=>x[0]===S.filiere))S.filiere="";
+  fillSelect($("#f-filiere"),fl,S.filiere);
+}
+function renderTop(){
+  document.querySelectorAll("[data-k]").forEach(el=>{if(el.tagName!=="SELECT"&&document.activeElement!==el)el.value=S[el.dataset.k]??""});
+  $("#f-dnb").value=S.dnb;
+  document.querySelectorAll("[data-seg]").forEach(b=>b.setAttribute("aria-pressed",S[b.dataset.seg]===b.dataset.val));
+  $("#photo-field").hidden=S.photoOn!=="oui";
+  const t=$("#photo-thumb");t.hidden=!S.photo;if(S.photo)t.src=S.photo;$("#photo-remove").hidden=!S.photo;
+  $("#dnb-annee-field").hidden=!S.dnb||S.dnb==="non";
+  $("#pres-count").textContent=`${S.presentation.length} / 320 caractères`;
+  const f=fil(),att=[...ATT_SUGG.all,...(f&&ATT_SUGG[f.dom]||[]),"Aucune pour l’instant"];
+  $("#att-sugg").innerHTML=att.map(a=>`<button type="button" class="chip" data-att="${esc(a)}">+ ${esc(a)}</button>`).join("");
+}
+function input(id,list,i,k,val,label,ph_=""){return `<div class="field"><label for="${id}">${label}</label><input type="text" id="${id}" data-list="${list}" data-i="${i}" data-f="${k}" value="${esc(val)}" placeholder="${esc(ph_)}"></div>`}
+function renderPrev(){$("#rep-prev").innerHTML=S.prevForms.map((p,i)=>`<div class="row"><div class="row-head"><span>Formation ${i+1}</span><button type="button" class="btn small danger" data-del="prevForms" data-i="${i}">Supprimer</button></div><div class="grid">
+  ${input(`pf-${i}-annee`,"prevForms",i,"annee",p.annee,"Année scolaire","2024-2025")}${input(`pf-${i}-intitule`,"prevForms",i,"intitule",p.intitule,"Classe ou formation","Classe de 3e")}
+  ${input(`pf-${i}-etab`,"prevForms",i,"etab",p.etab,"Établissement","Collège …")}${input(`pf-${i}-ville`,"prevForms",i,"ville",p.ville,"Ville")}</div></div>`).join("")}
+function renderDipl(){$("#rep-dipl").innerHTML=S.diplomes.map((p,i)=>`<div class="row"><div class="row-head"><span>Diplôme ${i+1}</span><button type="button" class="btn small danger" data-del="diplomes" data-i="${i}">Supprimer</button></div><div class="grid">
+  ${input(`dp-${i}-annee`,"diplomes",i,"annee",p.annee,"Année d’obtention","2025")}${input(`dp-${i}-intitule`,"diplomes",i,"intitule",p.intitule,"Intitulé du diplôme","CAP …")}</div></div>`).join("")}
+function renderExp(){$("#rep-exp").innerHTML=S.experiences.map((e,i)=>{const ms=missionList(e),n=e.missions.length;
+  return `<div class="row"><div class="row-head"><span>Expérience ${i+1}</span><button type="button" class="btn small danger" data-del="experiences" data-i="${i}">Supprimer</button></div><div class="grid">
+  <div class="field"><label for="ex-${i}-type">Type d’expérience</label><select id="ex-${i}-type" data-list="experiences" data-i="${i}" data-f="type"><option value="">Choisis…</option>${EXP_TYPES.map(([v,l])=>`<option value="${v}"${v===e.type?" selected":""}>${l}</option>`).join("")}</select></div>
+  ${input(`ex-${i}-periode`,"experiences",i,"periode",e.periode,"Période","Ex. : décembre 2024 (1 semaine)")}
+  ${input(`ex-${i}-entreprise`,"experiences",i,"entreprise",e.entreprise,"Entreprise ou structure")}${input(`ex-${i}-ville`,"experiences",i,"ville",e.ville,"Ville")}
+  <div class="field full"><label for="ex-${i}-poste">Mon rôle</label><input type="text" id="ex-${i}-poste" data-list="experiences" data-i="${i}" data-f="poste" value="${esc(e.poste)}" placeholder="${fem()?"Stagiaire, aide-électricienne, vendeuse…":"Stagiaire, aide-électricien, vendeur…"}"></div>
+  <div class="field full"><span class="lab">Mes missions (4 maximum) <span class="counter">${n}/4</span></span>
+  <div class="chips" id="ex-${i}-missions">${ms.map(t=>{const on=e.missions.includes(t);return `<button type="button" class="chip" data-mission="${i}" data-val="${esc(t)}" aria-pressed="${on}"${!on&&n>=4?" disabled":""}>${esc(t)}</button>`}).join("")}</div>
+  ${input(`ex-${i}-autre`,"experiences",i,"autre",e.autre,"Une autre mission (facultatif)","Écris-la ici si elle n’est pas dans la liste")}</div></div></div>`}).join("")}
+function renderLang(){$("#rep-lang").innerHTML=S.langues.map((l,i)=>`<div class="lang-row">
+  <select id="lg-${i}-langue" aria-label="Langue ${i+1}" data-list="langues" data-i="${i}" data-f="langue"><option value="">Langue…</option>${LANGS.map(x=>`<option${x===l.langue?" selected":""}>${x}</option>`).join("")}</select>
+  <select id="lg-${i}-niveau" aria-label="Niveau ${i+1}" data-list="langues" data-i="${i}" data-f="niveau"><option value="">Niveau…</option>${LANG_LEVELS.map(x=>`<option${x===l.niveau?" selected":""}>${x}</option>`).join("")}</select>
+  <button type="button" class="btn small danger" data-del="langues" data-i="${i}" aria-label="Supprimer la langue">✕</button></div>`).join("")}
+function renderInt(){$("#rep-int").innerHTML=S.interets.map((t,i)=>`<div class="int-row"><input type="text" id="in-${i}" aria-label="Centre d’intérêt ${i+1}" data-list="interets" data-i="${i}" value="${esc(t)}" placeholder="Ex. : Football en club depuis 3 ans, au poste de gardien">
+  <button type="button" class="btn small danger" data-del="interets" data-i="${i}" aria-label="Supprimer">✕</button></div>`).join("")}
+function chipGroup(id,group,items,sel,max){const n=sel.length;$(id).innerHTML=items.map(([v,l])=>{const on=sel.includes(v);return `<button type="button" class="chip" data-group="${group}" data-val="${esc(v)}" aria-pressed="${on}"${max&&!on&&n>=max?" disabled":""}>${esc(l)}</button>`}).join("")}
+function renderChips(){
+  S.competences=S.competences.filter(c=>compList().includes(c));S.info=S.info.filter(c=>infoList().includes(c));
+  chipGroup("#g-qualites","qualites",QUALITES.map(q=>[q[0],fem()?q[2]:q[1]]),S.qualites,3);
+  const cl=compList();
+  if(cl.length)chipGroup("#g-competences","competences",cl.map(c=>[c,c]),S.competences,6);
+  else $("#g-competences").innerHTML=`<span class="hint">Choisis d’abord ton niveau et ta filière à l’étape 2.</span>`;
+  chipGroup("#g-info","info",infoList().map(c=>[c,c]),S.info,0);
+  chipGroup("#g-mobilite","mobilite",MOBILITE,S.mobilite,0);
+  $("#cnt-qualites").textContent=`${S.qualites.length}/3`;$("#cnt-competences").textContent=`${S.competences.length}/6`;
+}
+function renderStyle(){
+  for(const k of ["soutenues","pastel"])$("#sw-"+k).innerHTML=COLORS[k].map(c=>`<button type="button" class="sw" data-color="${c[0]}" title="${esc(c[1])}" aria-label="${esc(c[1])}" aria-pressed="${S.couleur===c[0]}" style="background:${c[2]}"></button>`).join("");
+  const pics={bandeau:`<rect x="0" y="0" width="60" height="84" fill="currentColor" opacity=".9"/><rect x="72" y="10" width="70" height="8" rx="2" fill="currentColor"/><rect x="72" y="28" width="80" height="4" fill="currentColor" opacity=".35"/><rect x="72" y="38" width="76" height="4" fill="currentColor" opacity=".35"/><rect x="72" y="52" width="80" height="4" fill="currentColor" opacity=".35"/>`,
+    entete:`<rect x="0" y="0" width="160" height="30" fill="currentColor" opacity=".9"/><rect x="10" y="42" width="85" height="4" fill="currentColor" opacity=".35"/><rect x="10" y="52" width="80" height="4" fill="currentColor" opacity=".35"/><rect x="108" y="42" width="44" height="4" fill="currentColor" opacity=".35"/><rect x="108" y="52" width="40" height="4" fill="currentColor" opacity=".35"/>`,
+    epure:`<rect x="0" y="0" width="160" height="6" fill="currentColor" opacity=".9"/><rect x="12" y="16" width="70" height="8" rx="2" fill="currentColor"/><rect x="12" y="36" width="136" height="1.5" fill="currentColor"/><rect x="12" y="44" width="130" height="4" fill="currentColor" opacity=".35"/><rect x="12" y="54" width="120" height="4" fill="currentColor" opacity=".35"/>`};
+  $("#styles").innerHTML=STYLES.map(([k,l])=>`<button type="button" class="style-opt" data-style="${k}" aria-pressed="${S.style===k}"><svg viewBox="0 0 160 84" aria-hidden="true" style="color:var(--accent)"><rect width="160" height="84" fill="var(--sunk)"/>${pics[k]}</svg><span>${l}</span></button>`).join("");
+}
+function renderAll(){renderSelects();renderTop();renderPrev();renderDipl();renderExp();renderLang();renderInt();renderChips();renderStyle();update()}
+
+/* ---------- Rendu du CV ---------- */
+const ICON={home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',tel:'<path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/>',mail:'<path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V8l8 5 8-5v-.7z"/>',cake:'<path d="M12 3c1 1.2 1.5 2 1.5 2.8a1.5 1.5 0 0 1-3 0C10.5 5 11 4.2 12 3zM5 10h14a2 2 0 0 1 2 2v2.2c-1 .9-2 .9-3 0s-2-.9-3 0-2 .9-3 0-2-.9-3 0-2 .9-3 0-2-.9-3 0V12a2 2 0 0 1 2-2zm-2 6.6c1.2.7 2.5.6 3.6-.2 1 .8 2.4.8 3.4 0 1 .8 2.4.8 3.4 0 1 .8 2.4.8 3.4 0 1.1.8 2.4.9 3.6.2V21H3zM11 6.8h2V10h-2z"/>'};
+const ic=k=>`<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${ICON[k]}</svg>`;
+function cvBlocks(){
+  const L=lvl(),F=fil(),a=age(S.naissance);
+  const name=`<h2 class="cv-name">${ph(S.prenom,"Prénom")} <span class="last">${ph(S.nom,"Nom")}</span></h2>`;
+  const title=`<p class="cv-title">${L&&F?esc(`Élève en ${L.short}${F.sigle&&L.kind==="bp"?" "+F.sigle:""}`):"<mark>Niveau et filière</mark>"}</p>`;
+  const sub=`<p class="cv-sub">Recherche une période de formation en milieu professionnel (PFMP)</p>`;
+  const contact=`<ul class="cv-contact">
+    <li>${ic("home")}<span>${ph(S.adresse,"Adresse")}<br>${ph(S.cp,"Code postal")} ${ph(S.ville,"Ville")}</span></li>
+    <li>${ic("tel")}<span>${ph(S.tel,"Téléphone")}</span></li>
+    <li>${ic("mail")}<span>${ph(S.email,"E-mail")}</span></li>
+    <li>${ic("cake")}<span>${S.naissance?`${fem()?"Née":"Né"} le ${fmtDate(S.naissance)}${a?` (${a} ans)`:""}`:"<mark>Date de naissance</mark>"}</span></li></ul>`;
+  const photo=S.photoOn==="oui"?(S.photo?`<img class="cv-photo" src="${S.photo}" alt="">`:`<div class="cv-photo ph">Ta photo</div>`):S.photoOn===""?`<div class="cv-photo ph">Photo : oui ou non ?</div>`:"";
+  const sec=(t,body)=>`<section class="cv-sec"><h3 class="cv-h">${t}</h3>${body}</section>`;
+  const profil=sec("Profil",`<p class="cv-p">${ph(S.presentation,"Ta phrase de présentation")}</p>`);
+  const cur=`<div class="cv-item"><div class="cv-when">${ph(S.annee,"Année")}</div><div><div class="cv-what">${L?esc(L.line)+" · ":""}${ph(S.formationNom,"Ta formation")}</div><div class="cv-where">Lycée ${ph(S.lyceeNom,"Nom du lycée")}, ${ph(S.lyceeVille,"Ville")}</div></div></div>`;
+  const prev=S.prevForms.map(p=>`<div class="cv-item"><div class="cv-when">${ph(p.annee,"Année")}</div><div><div class="cv-what">${ph(p.intitule,"Classe")}</div><div class="cv-where">${ph(p.etab,"Établissement")}, ${ph(p.ville,"Ville")}</div></div></div>`).join("");
+  const formation=sec("Formation",cur+prev);
+  const mention={ok:"",ab:", mention Assez bien",b:", mention Bien",tb:", mention Très bien"};
+  let dips="";
+  if(!S.dnb)dips+=`<div class="cv-item"><div class="cv-when"><mark>Année</mark></div><div class="cv-what"><mark>Brevet : résultat ?</mark></div></div>`;
+  else if(S.dnb!=="non")dips+=`<div class="cv-item"><div class="cv-when">${ph(S.dnbAnnee,"Année")}</div><div class="cv-what">Diplôme national du brevet${mention[S.dnb]}</div></div>`;
+  dips+=S.diplomes.map(p=>`<div class="cv-item"><div class="cv-when">${ph(p.annee,"Année")}</div><div class="cv-what">${ph(p.intitule,"Diplôme")}</div></div>`).join("");
+  const diplomes=dips?sec("Diplômes",dips):"";
+  const typeL=t=>(EXP_TYPES.find(x=>x[0]===t)||[])[1];
+  const exps=sec("Expériences",S.experiences.length?S.experiences.map(e=>{const ms=[...e.missions,...(e.autre.trim()?[e.autre.trim()]:[])];
+    return `<div class="cv-item"><div class="cv-when">${ph(e.periode,"Période")}</div><div><div class="cv-what">${e.type?`<span class="cv-tag">${esc(typeL(e.type))}</span>`:"<mark>Type</mark> "}${ph(e.poste,"Ton rôle")}</div><div class="cv-where">${ph(e.entreprise,"Entreprise")}, ${ph(e.ville,"Ville")}</div>
+    ${ms.length?`<ul class="cv-ul">${ms.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:`<ul class="cv-ul"><li><mark>Tes missions</mark></li></ul>`}</div></div>`}).join(""):`<p class="cv-p"><mark>Au moins une expérience</mark></p>`);
+  const comp=sec("Compétences",S.competences.length?`<ul class="cv-ul">${S.competences.map(c=>`<li>${esc(c)}</li>`).join("")}${S.competences.length<3?`<li><mark>3 compétences minimum</mark></li>`:""}</ul>`:`<p class="cv-p"><mark>3 à 6 compétences</mark></p>`);
+  const qual=sec("Qualités",`<div class="cv-pills">${S.qualites.map(q=>`<span class="cv-pill">${esc(qLabel(q))}</span>`).join("")}${S.qualites.length<2?`<mark>${S.qualites.length?"Encore une qualité":"2 ou 3 qualités"}</mark>`:""}</div>`);
+  const info=sec("Informatique",S.info.length?`<ul class="cv-ul">${S.info.map(c=>`<li>${esc(c)}</li>`).join("")}</ul>`:`<p class="cv-p"><mark>Au moins une</mark></p>`);
+  const langs=sec("Langues",`<ul class="cv-ul">${S.langues.length?S.langues.map(l=>`<li><b>${ph(l.langue,"Langue")}</b> : ${ph(l.niveau,"niveau")}</li>`).join(""):"<li><mark>Au moins une langue</mark></li>"}</ul>`);
+  const att=sec("Attestations",`<p class="cv-p">${ph(S.attestations,"Attestations ou « Aucune pour l’instant »")}</p>`);
+  const mob=sec("Mobilité",S.mobilite.length?`<ul class="cv-ul">${MOBILITE.filter(x=>S.mobilite.includes(x[0])).map(x=>`<li>${esc(x[1])}</li>`).join("")}</ul>`:`<p class="cv-p"><mark>Comment tu te déplaces</mark></p>`);
+  const ints=sec("Centres d’intérêt",`<ul class="cv-ul">${S.interets.length?S.interets.map(t=>`<li>${ph(t,"Centre d’intérêt")}</li>`).join(""):"<li><mark>Au moins un</mark></li>"}</ul>`);
+  return {name,title,sub,contact,photo,profil,formation,diplomes,exps,comp,qual,info,langs,att,mob,ints};
+}
+function cvHTML(){
+  const b=cvBlocks();
+  if(S.style==="entete")return `<div class="top">${b.photo}<div class="grow">${b.name}${b.title}${b.sub}${b.contact}</div></div>
+    <div class="body"><div class="l">${b.profil}${b.exps}${b.formation}${b.diplomes}</div><div class="r">${b.comp}${b.qual}${b.info}${b.langs}${b.att}${b.mob}${b.ints}</div></div>`;
+  if(S.style==="epure")return `<div class="top"><div class="grow">${b.name}${b.title}${b.sub}${b.contact}</div>${b.photo}</div>
+    ${b.profil}${b.exps}${b.formation}${b.diplomes}<div class="cols"><div>${b.comp}${b.info}${b.att}</div><div>${b.qual}${b.langs}${b.mob}${b.ints}</div></div>`;
+  return `<aside class="side">${b.photo}<section class="cv-sec"><h3 class="cv-h">Contact</h3>${b.contact}</section>${b.qual}${b.info}${b.langs}${b.mob}${b.ints}</aside>
+    <div class="main"><div class="head">${b.name}${b.title}${b.sub}</div>${b.profil}${b.formation}${b.diplomes}${b.exps}${b.comp}${b.att}</div>`;
+}
+function applyCvLook(el){
+  const c=colorOf(S.couleur);el.className=`cv st-${S.style}${c.pastel?" pastel":""}`;
+  el.style.setProperty("--c",c.main);el.style.setProperty("--on",c.pastel?"#1E2228":"#FFFFFF");
+  el.style.setProperty("--t",c.title);el.style.setProperty("--tint",c.pastel?mix(c.main,.55):mix(c.main,.86));
+}
+function fit(el){
+  let lo=.6,hi=1.22;el.style.setProperty("--s",hi);if(el.offsetHeight<=1123)return hi;
+  for(let k=0;k<12;k++){const mid=(lo+hi)/2;el.style.setProperty("--s",mid);if(el.offsetHeight<=1123)lo=mid;else hi=mid}
+  el.style.setProperty("--s",lo);return lo;
+}
+function renderCV(){const el=$("#cv");applyCvLook(el);el.innerHTML=cvHTML();fit(el);scaleFrame()}
+function scaleFrame(){const fr=$("#frame"),k=fr.clientWidth/794;fr.style.height=(1123*k)+"px";$("#cv").style.transform=`scale(${k})`}
+new ResizeObserver(scaleFrame).observe($("#frame"));
+
+function update(){renderCV();paintMissing();save()}
+
+/* ---------- Évènements ---------- */
+document.addEventListener("input",e=>{
+  const t=e.target;
+  if(t.dataset.k){S[t.dataset.k]=t.value;
+    if(t.dataset.k==="formationNom")S.formationAuto="";
+    if(t.dataset.k==="presentation")$("#pres-count").textContent=`${S.presentation.length} / 320 caractères`;
+    if(t.tagName!=="SELECT")return update()}
+  if(t.dataset.list){const L=S[t.dataset.list],i=+t.dataset.i;
+    if(t.dataset.list==="interets")L[i]=t.value;else L[i][t.dataset.f]=t.value;
+    if(t.tagName!=="SELECT")return update()}
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t.tagName==="SELECT"&&t.dataset.k){S[t.dataset.k]=t.value;
+    if(t.dataset.k==="niveau"||t.dataset.k==="filiere"){
+      if(t.dataset.k==="niveau")renderSelects();
+      const auto=autoFormation();if(!S.formationNom||S.formationNom===S.formationAuto){S.formationNom=auto;S.formationAuto=auto}
+      renderTop();renderChips();renderExp();
+    }
+    if(t.dataset.k==="dnb")renderTop();
+    update()}
+  if(t.tagName==="SELECT"&&t.dataset.list){S[t.dataset.list][+t.dataset.i][t.dataset.f]=t.value;if(t.dataset.list==="experiences")renderExp();update()}
+});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.seg){S[b.dataset.seg]=b.dataset.val;if(b.dataset.seg==="genre"){renderChips();renderExp()}renderTop();return update()}
+  if(b.dataset.group){const g=S[b.dataset.group],v=b.dataset.val,i=g.indexOf(v);i>=0?g.splice(i,1):g.push(v);renderChips();return update()}
+  if(b.dataset.mission!==undefined){const ex=S.experiences[+b.dataset.mission],v=b.dataset.val,i=ex.missions.indexOf(v);i>=0?ex.missions.splice(i,1):ex.missions.length<4&&ex.missions.push(v);renderExp();return update()}
+  if(b.dataset.add){const k=b.dataset.add;S[k].push(k==="prevForms"?{annee:"",intitule:"",etab:"",ville:""}:k==="diplomes"?{annee:"",intitule:""}:k==="experiences"?newExp():k==="langues"?{langue:"",niveau:""}:"");
+    ({prevForms:renderPrev,diplomes:renderDipl,experiences:renderExp,langues:renderLang,interets:renderInt})[k]();return update()}
+  if(b.dataset.del){S[b.dataset.del].splice(+b.dataset.i,1);({prevForms:renderPrev,diplomes:renderDipl,experiences:renderExp,langues:renderLang,interets:renderInt})[b.dataset.del]();return update()}
+  if(b.dataset.att){const a=b.dataset.att;if(a==="Aucune pour l’instant")S.attestations=a;else{const cur=S.attestations.split(",").map(x=>x.trim()).filter(x=>x&&x!=="Aucune pour l’instant");if(!cur.includes(a))cur.push(a);S.attestations=cur.join(", ")}renderTop();return update()}
+  if(b.dataset.color){S.couleur=b.dataset.color;renderStyle();return update()}
+  if(b.dataset.style){S.style=b.dataset.style;renderStyle();return update()}
+});
+$("#f-photo").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{
+  const W=360,H=480,c=document.createElement("canvas");c.width=W;c.height=H;const ctx=c.getContext("2d");
+  const s=Math.max(W/img.width,H/img.height),w=img.width*s,h=img.height*s;ctx.fillStyle="#fff";ctx.fillRect(0,0,W,H);ctx.drawImage(img,(W-w)/2,(H-h)/2,w,h);
+  S.photo=c.toDataURL("image/jpeg",.85);renderTop();update()};img.src=r.result};r.readAsDataURL(f);e.target.value=""});
+$("#photo-remove").addEventListener("click",()=>{S.photo="";renderTop();update()});
+$("#pres-help").addEventListener("click",()=>{
+  const L=lvl(),F=fil(),q=S.qualites.slice(0,2).map(qLabel).map(x=>x.toLowerCase());
+  const who=L&&F?`Élève de ${L.short}${L.kind==="bp"?" "+F.sigle:""}`:(fem()?"Élève motivée":"Élève motivé");
+  const quals=q.length===2?`, ${q[0]} et ${q[1]},`:(q.length===1?`, ${q[0]},`:"");
+  S.presentation=`${who}${quals} je recherche une PFMP pour découvrir ${F?F.metier:"le monde de l’entreprise"} et mettre en pratique ce que j’apprends au lycée.`;
+  renderTop();update();$("#f-presentation").focus()});
+
+let confirmAction=null;
+function ask(text,action,yes){$("#confirm-text").textContent=text;$("#confirm-yes").textContent=yes;confirmAction=action;$("#confirm").hidden=false}
+$("#reset").addEventListener("click",()=>ask("Tout effacer ? Ton CV sera vidé.",()=>{S=blank();renderAll()},"Oui, tout effacer"));
+$("#example").addEventListener("click",()=>ask("Remplacer ton CV par l’exemple ? Ce que tu as écrit sera effacé.",()=>{S=example();renderAll()},"Oui, voir l’exemple"));
+$("#confirm-yes").addEventListener("click",()=>{$("#confirm").hidden=true;confirmAction&&confirmAction()});
+$("#confirm-no").addEventListener("click",()=>{$("#confirm").hidden=true});
+
+function showMsg(t,kind){const m=$("#dl-msg");m.textContent=t;m.className="msg "+kind;m.hidden=false}
+$("#dl").addEventListener("click",async()=>{
+  const miss=paintMissing();
+  if(miss.length){showMsg(`Il manque encore ${miss.length} élément${miss.length>1?"s":""} (en jaune). Je t’emmène au premier.`,"warn");
+    const el=document.getElementById(miss[0].id);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});const f=el.matches("input,select,textarea")?el:el.querySelector("input,select,textarea,button");f&&setTimeout(()=>f.focus({preventScroll:true}),400)}return}
+  const btn=$("#dl");btn.disabled=true;btn.textContent="Création du PDF…";
+  try{
+    await document.fonts.ready;
+    const host=document.createElement("div");host.style.cssText="position:fixed;left:-10000px;top:0;width:794px;";
+    const el=document.createElement("div");host.appendChild(el);document.body.appendChild(host);
+    applyCvLook(el);el.innerHTML=cvHTML();el.style.setProperty("--s",$("#cv").style.getPropertyValue("--s"));fit(el);el.style.height="1123px";el.style.overflow="hidden";
+    el.querySelectorAll("svg").forEach(s=>{const c=getComputedStyle(s).color;s.setAttribute("fill",c);s.setAttribute("width",s.getBoundingClientRect().width);s.setAttribute("height",s.getBoundingClientRect().height)});
+    const canvas=await html2canvas(el,{scale:2.5,backgroundColor:"#ffffff",useCORS:true,width:794,height:1123,windowWidth:794});
+    host.remove();
+    const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:"mm",format:"a4",orientation:"portrait"});
+    pdf.addImage(canvas.toDataURL("image/jpeg",.93),"JPEG",0,0,210,297);
+    const clean=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9-]+/g,"_");
+    const filename=`CV_${clean(S.prenom)}_${clean(S.nom).toUpperCase()}.pdf`;
+    const dl=window.claude&&typeof window.claude.use==="function"?await window.claude.use("downloads"):null;
+    if(dl){try{await dl.save({filename,data:pdf.output("blob")});showMsg("Ton CV est enregistré dans tes téléchargements.","good")}
+      catch(err){showMsg(err&&err.code==="declined"?"Enregistrement annulé. Clique à nouveau sur le bouton quand tu veux.":"Le PDF n’a pas pu être enregistré ici. Réessaie dans un instant.","warn")}}
+    else{pdf.save(filename);showMsg("Ton CV est enregistré dans tes téléchargements.","good")}
+  }catch(err){showMsg("Le PDF n’a pas pu être créé. Vérifie ta connexion Internet puis réessaie.","warn")}
+  finally{btn.disabled=false;btn.textContent="Télécharger mon CV en PDF"}
+});
+
+if(AUTEUR)$("#author-line").textContent=` · Adapté par ${AUTEUR}`;
+renderAll();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(renderCV);
+</script>
+
+</body>
+</html>
