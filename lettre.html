@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Ma lettre de motivation PFMP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+
+/* Layout : formulaire en étapes à gauche, feuille A4 vivante collée à droite ; une colonne sur téléphone */
+:root{
+  --bg:#EEF2F6; --surface:#FFFFFF; --sunk:#F6F8FB; --ink:#152130; --muted:#5A6779; --line:#D3DBE5;
+  --accent:#1B4F8F; --accent-soft:#E2EBF7; --on-accent:#FFFFFF;
+  --miss:#FFEE8A; --miss-line:#D9AE00; --miss-ink:#3D3200; --ok:#1C7A4E; --ok-soft:#DDF2E7;
+  --f-display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --f-body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E141C; --surface:#17202B; --sunk:#111922; --ink:#E5EBF2; --muted:#9BA8B8; --line:#2B3846;
+  --accent:#78AEF2; --accent-soft:#1C2E45; --on-accent:#0B1422;
+  --miss:#5C4A00; --miss-line:#E2BA1C; --miss-ink:#FFF3BF; --ok:#5FD39A; --ok-soft:#163327; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0E141C; --surface:#17202B; --sunk:#111922; --ink:#E5EBF2; --muted:#9BA8B8; --line:#2B3846;
+  --accent:#78AEF2; --accent-soft:#1C2E45; --on-accent:#0B1422;
+  --miss:#5C4A00; --miss-line:#E2BA1C; --miss-ink:#FFF3BF; --ok:#5FD39A; --ok-soft:#163327; color-scheme:dark }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1420px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* En-tête du lycée */
+.school{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.mono{width:52px;height:52px;flex:none;border-radius:8px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:.02em}
+.school p{margin:0;font-size:13.5px;color:var(--muted);min-width:0}
+.school strong{color:var(--ink);font-size:14.5px}
+.intro{display:grid;gap:6px;padding-block:18px 8px}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.intro p{margin:0;max-width:70ch;color:var(--muted)}
+.intro mark{background:var(--miss);color:var(--miss-ink);padding:0 4px;border-radius:3px}
+
+.layout{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:28px;align-items:start;margin-top:14px}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}}
+
+/* Étapes */
+.steps{display:grid;gap:16px;min-width:0}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:grid;gap:14px;min-width:0}
+.step h2{margin:0;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:19px}
+.num{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font-size:15px;flex:none}
+.step h2 .done{margin-left:auto;font-family:var(--f-body);font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--miss);color:var(--miss-ink)}
+.step h2 .done.ok{background:var(--ok-soft);color:var(--ok)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.grid .full{grid-column:1/-1}
+@media (max-width:520px){.grid{grid-template-columns:minmax(0,1fr)}}
+.field{display:grid;gap:4px;min-width:0}
+.field>label,.lab{font-weight:700;font-size:13.5px}
+input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;padding:9px 11px;border:1.5px solid var(--line);border-radius:7px;background:var(--sunk);min-width:0}
+textarea{resize:vertical;min-height:84px}
+.missing input,.missing select,.missing textarea,input.missing,select.missing,textarea.missing{background:var(--miss);border-color:var(--miss-line);color:var(--miss-ink)}
+.chips.missing,.seg.missing,.photo-box.missing{background:var(--miss);border-color:var(--miss-line);color:var(--miss-ink)}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.hint b{color:var(--ink)}
+
+.seg{display:flex;flex-wrap:wrap;gap:6px;padding:4px;border:1.5px solid var(--line);border-radius:9px;width:fit-content;max-width:100%}
+.seg button{border:0;background:transparent;padding:7px 14px;border-radius:6px;cursor:pointer;font-weight:700}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:8px;border:1.5px dashed var(--line);border-radius:9px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:99px;padding:5px 12px;cursor:pointer;font-size:13.5px;text-align:left;line-height:1.3}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chip[aria-pressed=true]::before{content:"✓ "}
+.chip:disabled{opacity:.45;cursor:not-allowed}
+.counter{font-size:12.5px;font-weight:700;color:var(--muted)}
+
+.rep{display:grid;gap:10px}
+.row{border:1px solid var(--line);border-radius:9px;padding:12px;background:var(--sunk);display:grid;gap:10px;min-width:0}
+.row-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.row-head span{font-weight:700;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.btn{border:1.5px solid var(--accent);background:transparent;color:var(--accent);padding:7px 13px;border-radius:7px;font-weight:700;cursor:pointer;width:fit-content}
+.btn:hover{background:var(--accent-soft)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.small{padding:4px 10px;font-size:13px}
+.btn.danger{border-color:#B3261E;color:#B3261E}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn.danger{border-color:#F28B82;color:#F28B82} }
+:root[data-theme="dark"] .btn.danger{border-color:#F28B82;color:#F28B82}
+.btn.big{padding:12px 20px;font-size:16px}
+.inline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.lang-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:center}
+.int-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+
+.photo-box{display:flex;gap:12px;align-items:center;flex-wrap:wrap;border:1.5px dashed var(--line);border-radius:9px;padding:10px}
+.photo-box img{width:66px;height:88px;border-radius:6px;background:var(--line)}
+
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.sw{width:38px;height:38px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1.5px var(--line);cursor:pointer;padding:0}
+.sw[aria-pressed=true]{box-shadow:0 0 0 3px var(--accent)}
+.styles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.style-opt{border:1.5px solid var(--line);border-radius:9px;background:var(--surface);padding:10px;cursor:pointer;display:grid;gap:6px;text-align:left}
+.style-opt[aria-pressed=true]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.style-opt svg{width:100%;height:auto}
+.style-opt span{font-weight:700;font-size:13.5px}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px;border-radius:8px;background:var(--sunk);border:1px solid var(--line)}
+.msg{font-size:14px;padding:10px 12px;border-radius:8px;margin:0}
+.msg.warn{background:var(--miss);color:var(--miss-ink)}
+.msg.good{background:var(--ok-soft);color:var(--ok)}
+
+/* Colonne aperçu */
+.preview-col{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);display:grid;gap:10px;min-width:0}
+@media (max-width:980px){.preview-col{position:static}}
+.pv-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.pv-head h2{margin:0;font-family:var(--f-display);font-size:19px;font-weight:800}
+.status{font-weight:700;font-size:13.5px;padding:5px 12px;border-radius:99px;background:var(--miss);color:var(--miss-ink)}
+.status.ok{background:var(--ok-soft);color:var(--ok)}
+.frame{position:relative;width:100%;overflow:hidden;border-radius:4px;box-shadow:0 1px 2px rgba(10,20,40,.12),0 8px 28px rgba(10,20,40,.14)}
+.frame .cv{position:absolute;top:0;left:0;transform-origin:top left}
+.pv-foot{font-size:12.5px;color:var(--muted);margin:0}
+
+
+.navlink{font-weight:700;color:var(--accent);text-decoration:none;border-bottom:2px solid currentColor;width:fit-content}
+.sugg{display:grid;gap:6px}
+.sugg button{border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 11px;cursor:pointer;text-align:left;font-size:13.5px;line-height:1.35}
+.sugg button:hover{border-color:var(--accent)}
+.sugg button::before{content:"+ ";font-weight:700;color:var(--accent)}
+.para{display:grid;gap:8px;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--sunk)}
+.para h3{margin:0;font-size:14.5px;font-family:var(--f-display);font-weight:800}
+.para .hint{margin-top:-4px}
+.import{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 12px;border-radius:8px;background:var(--accent-soft)}
+.import p{margin:0;font-size:14px;flex:1;min-width:200px}
+.check{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+
+/* ===== La lettre (papier : toujours clair) ===== */
+.cv{width:794px;min-height:1123px;background:#FFFFFF;color:#1E2228;font-family:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  --c:#1D3557;--t:#1D3557;font-size:calc(14.2px * var(--s,1));line-height:1.5;padding:4.4em 5.2em 4em}
+.cv *{box-sizing:border-box}
+.cv mark{background:#FFE45C;color:#3A3000;padding:0 .25em;border-radius:2px;font-weight:600}
+.cv p{margin-block:0}
+.lt-from{line-height:1.4}
+.lt-from .nm{font-weight:700;font-size:1.08em}
+.cv .lt-to{margin:1.6em 0 0 52%;line-height:1.4}
+.lt-to .ent{font-weight:700}
+.cv .lt-date{margin:1.6em 0 0 52%}
+.cv .lt-obj{margin-top:2.2em}
+.lt-obj b{font-weight:700}
+.cv .lt-pj{margin-top:.2em}
+.cv .lt-appel{margin-top:1.8em}
+.lt-body{margin-top:1em;display:grid;gap:.95em;text-align:justify;hyphens:auto}
+.cv .lt-sign{margin:2em 0 0 52%;font-weight:700}
+</style>
+
+<div class="wrap">
+  <header class="school">
+    <div class="mono" aria-hidden="true">CV</div>
+    <p><strong>Outil conçu par Mme Marie FRISON, professeure d’Éco-Gestion</strong><br>
+    sur le modèle du générateur de CV de Mme Isabelle Léger (lycée des métiers Marie Marvingt)</p>
+  </header>
+
+  <section class="intro">
+    <h1>Ma lettre de motivation pour la PFMP</h1>
+    <p>Remplis les étapes à gauche : ta lettre s’écrit toute seule à droite. Tout ce qui est <mark>surligné en jaune</mark> manque encore : <b>tous les champs sont obligatoires</b>, sauf ceux marqués « facultatif ». Dès qu’il n’y a plus de jaune, tu peux enregistrer ta lettre en PDF.</p>
+    <a class="navlink" id="nav-cv" href="./">← Retour à mon CV</a>
+  </section>
+
+  <div class="layout">
+    <div class="steps">
+
+      <section class="step" id="step1">
+        <h2><span class="num">1</span>Mes coordonnées<span class="done" data-step="1"></span></h2>
+        <div class="import" id="import" hidden>
+          <p id="import-text">Tu as déjà rempli ton CV sur cet ordinateur.</p>
+          <button type="button" class="btn small primary" id="import-btn">Reprendre les infos de mon CV</button>
+        </div>
+        <div class="grid">
+          <div class="field"><label for="f-prenom">Prénom</label><input type="text" id="f-prenom" data-k="prenom" autocomplete="given-name"></div>
+          <div class="field"><label for="f-nom">Nom</label><input type="text" id="f-nom" data-k="nom" autocomplete="family-name"></div>
+          <div class="field full"><label for="f-adresse">Adresse (numéro et rue)</label><input type="text" id="f-adresse" data-k="adresse"></div>
+          <div class="field"><label for="f-cp">Code postal</label><input type="text" id="f-cp" data-k="cp" inputmode="numeric" maxlength="5"></div>
+          <div class="field"><label for="f-ville">Ville</label><input type="text" id="f-ville" data-k="ville"></div>
+          <div class="field"><label for="f-tel">Téléphone</label><input type="tel" id="f-tel" data-k="tel" placeholder="06 12 34 56 78"></div>
+          <div class="field"><label for="f-email">Adresse e-mail</label><input type="email" id="f-email" data-k="email"></div>
+          <div class="field full"><span class="lab">Accords dans la lettre (ex. : motivé / motivée)</span>
+            <div class="seg" id="g-genre" role="group" aria-label="Accords">
+              <button type="button" data-seg="genre" data-val="f" aria-pressed="false">Au féminin</button>
+              <button type="button" data-seg="genre" data-val="m" aria-pressed="false">Au masculin</button>
+            </div></div>
+          <div class="field"><label for="f-niveau">Mon niveau</label><select id="f-niveau" data-k="niveau"></select></div>
+          <div class="field"><label for="f-filiere">Ma filière</label><select id="f-filiere" data-k="filiere"></select></div>
+          <div class="field"><label for="f-lyceeNom">Nom du lycée (sans le mot « lycée »)</label><input type="text" id="f-lyceeNom" data-k="lyceeNom"></div>
+          <div class="field"><label for="f-lyceeVille">Ville du lycée</label><input type="text" id="f-lyceeVille" data-k="lyceeVille"></div>
+        </div>
+      </section>
+
+      <section class="step" id="step2">
+        <h2><span class="num">2</span>L’entreprise<span class="done" data-step="2"></span></h2>
+        <div class="grid">
+          <div class="field full"><label for="f-entNom">Nom de l’entreprise</label><input type="text" id="f-entNom" data-k="entNom"></div>
+          <div class="field full"><span class="lab">À qui j’écris</span>
+            <div class="seg" id="g-civ" role="group" aria-label="Destinataire">
+              <button type="button" data-seg="civ" data-val="mme" aria-pressed="false">Une femme</button>
+              <button type="button" data-seg="civ" data-val="m" aria-pressed="false">Un homme</button>
+              <button type="button" data-seg="civ" data-val="inconnu" aria-pressed="false">Je ne connais pas son nom</button>
+            </div></div>
+          <div class="field" id="contact-field" hidden><label for="f-contact">Nom de la personne</label><input type="text" id="f-contact" data-k="contact" placeholder="Ex. : Dupont"></div>
+          <div class="field" id="fonction-field"><label for="f-fonction">Sa fonction (facultatif)</label><input type="text" id="f-fonction" data-k="fonction" placeholder="Ex. : Responsable du magasin"></div>
+          <div class="field full"><label for="f-entAdresse">Adresse de l’entreprise (numéro et rue)</label><input type="text" id="f-entAdresse" data-k="entAdresse"></div>
+          <div class="field"><label for="f-entCp">Code postal</label><input type="text" id="f-entCp" data-k="entCp" inputmode="numeric" maxlength="5"></div>
+          <div class="field"><label for="f-entVille">Ville</label><input type="text" id="f-entVille" data-k="entVille"></div>
+        </div>
+        <p class="hint">Si tu connais le nom de ton futur tuteur, écris-le : la lettre commencera par « Madame, » ou « Monsieur, » et sera adressée « À l’attention de » cette personne. Sinon, elle commencera par « Madame, Monsieur, ».</p>
+      </section>
+
+      <section class="step" id="step3">
+        <h2><span class="num">3</span>Les dates<span class="done" data-step="3"></span></h2>
+        <div class="grid">
+          <div class="field"><label for="f-debut">Début de la PFMP</label><input type="date" id="f-debut" data-k="debut"></div>
+          <div class="field"><label for="f-fin">Fin de la PFMP</label><input type="date" id="f-fin" data-k="fin"></div>
+          <div class="field"><label for="f-lieu">Lettre écrite à (ville)</label><input type="text" id="f-lieu" data-k="lieu"></div>
+          <div class="field"><label for="f-dateLettre">Le (date de la lettre)</label><input type="date" id="f-dateLettre" data-k="dateLettre"></div>
+        </div>
+        <p class="hint">Demande les dates exactes de ta PFMP à ton professeur.</p>
+      </section>
+
+      <section class="step" id="step4">
+        <h2><span class="num">4</span>J’écris ma lettre<span class="done" data-step="4"></span></h2>
+        <p class="hint">Pour chaque paragraphe, clique sur une ou deux phrases proposées : elles s’ajoutent dans la case. Tu peux ensuite les modifier avec tes propres mots. Une lettre personnelle fait meilleure impression.</p>
+
+        <div class="para">
+          <h3>Paragraphe 1 · Qui je suis</h3>
+          <p class="hint" id="p1-hint">Ce paragraphe s’écrit tout seul avec tes informations des étapes 1 et 3.</p>
+          <textarea id="f-p1" data-k="p1" hidden></textarea>
+          <div class="inline"><button type="button" class="btn small" id="p1-toggle">Je veux l’écrire moi-même</button></div>
+        </div>
+
+        <div class="para">
+          <h3>Paragraphe 2 · Pourquoi cette entreprise</h3>
+          <div class="sugg" id="s-p2"></div>
+          <textarea id="f-p2" data-k="p2" aria-label="Paragraphe 2"></textarea>
+          <div class="inline"><button type="button" class="btn small danger" data-clear="p2">Vider la case</button></div>
+        </div>
+
+        <div class="para">
+          <h3>Paragraphe 3 · Ce que je sais faire</h3>
+          <div class="field"><span class="lab">Compétences à citer (choisis-en 2)</span><div class="chips" id="g-comps"></div></div>
+          <div class="sugg" id="s-p3"></div>
+          <textarea id="f-p3" data-k="p3" aria-label="Paragraphe 3"></textarea>
+          <div class="inline"><button type="button" class="btn small danger" data-clear="p3">Vider la case</button></div>
+        </div>
+
+        <div class="para">
+          <h3>Paragraphe 4 · Mes qualités</h3>
+          <div class="field"><span class="lab">Mes qualités (choisis-en 2 ou 3)</span><div class="chips" id="g-quals"></div></div>
+          <div class="sugg" id="s-p4"></div>
+          <textarea id="f-p4" data-k="p4" aria-label="Paragraphe 4"></textarea>
+          <div class="inline"><button type="button" class="btn small danger" data-clear="p4">Vider la case</button></div>
+        </div>
+
+        <div class="para">
+          <h3>Paragraphe 5 · Ma demande</h3>
+          <div class="sugg" id="s-p5"></div>
+          <textarea id="f-p5" data-k="p5" aria-label="Paragraphe 5"></textarea>
+          <div class="inline"><button type="button" class="btn small danger" data-clear="p5">Vider la case</button></div>
+        </div>
+      </section>
+
+      <section class="step" id="step5">
+        <h2><span class="num">5</span>Formule de politesse<span class="done" data-step="5"></span></h2>
+        <div class="field"><span class="lab">Je termine ma lettre par</span><div class="sugg" id="g-politesse" role="group" aria-label="Formule de politesse"></div></div>
+        <label class="check"><input type="checkbox" id="f-pj"> J’indique que mon CV est joint à la lettre</label>
+        <p class="hint">Pense à signer ta lettre à la main sous ton nom, après l’avoir imprimée.</p>
+      </section>
+
+      <section class="step" id="step6">
+        <h2><span class="num">6</span>Enregistrement en PDF</h2>
+        <p class="hint">Ta lettre est en noir et blanc, sobre et classique : c’est ce qu’attendent les entreprises.</p>
+        <div class="inline">
+          <button type="button" class="btn primary big" id="dl">Télécharger ma lettre en PDF</button>
+          <button type="button" class="btn" id="reset">Recommencer à zéro</button>
+          <button type="button" class="btn" id="example">Voir un exemple rempli</button>
+        </div>
+        <div class="confirm" id="confirm" hidden>
+          <span id="confirm-text"></span>
+          <button type="button" class="btn small danger" id="confirm-yes"></button>
+          <button type="button" class="btn small" id="confirm-no">Annuler</button>
+        </div>
+        <p class="msg" id="dl-msg" hidden></p>
+        <p class="hint">Le bouton crée directement ta lettre en PDF : une seule page A4. Pour l’imprimer, ouvre le PDF téléchargé et imprime-le depuis ce fichier.</p>
+        <p class="hint"><b>Ton travail est gardé sur cet ordinateur, dans ce navigateur.</b> Sur un ordinateur partagé du lycée, pense à cliquer sur « Recommencer à zéro » quand tu as fini.</p>
+      </section>
+    </div>
+
+    <aside class="preview-col" aria-label="Aperçu de la lettre">
+      <div class="pv-head"><h2>Aperçu de ma lettre</h2><span class="status" id="status"></span></div>
+      <div class="frame" id="frame"><div class="cv" id="cv"></div></div>
+      <p class="pv-foot">Format A4 · une page</p>
+    </aside>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const AUTEUR = "Mme Marie FRISON, professeure d’Éco-Gestion";
+const LYCEE_NOM = "Jean Hanzelet", LYCEE_VILLE = "Pont-à-Mousson";
+const STORE_KEY = "hanzelet-lettre-pfmp-v1", CV_KEY = "hanzelet-cv-pfmp-v1";
+
+const LEVELS = {
+  "2bp":{label:"Seconde baccalauréat professionnel",short:"Seconde bac pro",kind:"bp",rank:1},
+  "1bp":{label:"Première baccalauréat professionnel",short:"Première bac pro",kind:"bp",rank:2},
+  "tbp":{label:"Terminale baccalauréat professionnel",short:"Terminale bac pro",kind:"bp",rank:3},
+  "1cap":{label:"1re année de CAP",short:"1re année de CAP",kind:"cap",rank:1},
+  "2cap":{label:"2e année de CAP",short:"2e année de CAP",kind:"cap",rank:2}
+};
+const FILIERES = {
+  melec:{label:"MELEC – Électricité et environnements connectés",sigle:"MELEC",dom:"melec",levels:["2bp","1bp","tbp"]},
+  mspc:{label:"MSPC – Maintenance des systèmes de production connectés",sigle:"MSPC",dom:"mspc",levels:["2bp","1bp","tbp"]},
+  mrc:{label:"Métiers de la relation client (commerce et vente)",sigle:"Métiers de la relation client",dom:"com",levels:["2bp"]},
+  mcva:{label:"MCV option A – Animation et gestion de l’espace commercial",sigle:"Métiers du commerce et de la vente (option A)",dom:"comA",levels:["1bp","tbp"]},
+  mcvb:{label:"MCV option B – Prospection clientèle et valorisation de l’offre",sigle:"Métiers du commerce et de la vente (option B)",dom:"comB",levels:["1bp","tbp"]},
+  epc:{label:"CAP Équipier polyvalent du commerce",sigle:"Équipier polyvalent du commerce",dom:"epc",levels:["1cap","2cap"]}
+};
+const COM1 = ["Accueillir et renseigner le client","Mettre en rayon et faire le facing","Étiqueter les produits et contrôler les prix","Participer à la réception des marchandises","Tenir une caisse et encaisser","Garder le rayon propre et attractif"];
+const COMP = {
+  melec:{1:["Lire un schéma électrique simple","Réaliser un câblage en respectant les règles de sécurité","Utiliser l’outillage d’électricien","Poser goulottes, conduits et boîtiers","Raccorder prises, interrupteurs et éclairages","Appliquer la prévention du risque électrique"],
+         2:["Câbler une armoire ou un tableau électrique","Faire des mesures au multimètre","Mettre en service une installation","Participer à un diagnostic de panne","Installer un réseau informatique ou domotique"]},
+  mspc:{1:["Lire un plan ou un schéma technique","Utiliser l’outillage de mécanique","Démonter et remonter un sous-ensemble mécanique","Réaliser un graissage ou un contrôle de niveau","Appliquer les consignes de sécurité"],
+        2:["Réaliser une maintenance préventive","Participer au diagnostic d’une panne","Remplacer un composant défectueux","Effectuer des mesures et des réglages","Remettre un équipement en service"]},
+  com:{1:COM1,2:[]},
+  comA:{1:COM1,2:["Conseiller le client et conclure une vente","Participer à l’animation de l’espace de vente","Mettre en place une opération promotionnelle","Participer à un inventaire"]},
+  comB:{1:COM1,2:["Prospecter de nouveaux clients","Présenter et valoriser une offre commerciale","Conduire un entretien de vente","Mettre à jour un fichier clients"]},
+  epc:{1:["Réceptionner et contrôler les marchandises","Mettre en rayon et faire le facing","Étiqueter les produits et vérifier les prix","Accueillir et renseigner le client","Encaisser et tenir une caisse","Préparer des commandes"],2:["Participer à un inventaire","Conseiller le client sur un produit"]}
+};
+const DOM = {
+  melec:{secteur:"l’électricité",pourquoi:"vous intervenez dans l’installation et la maintenance électrique, le domaine qui me passionne",bases:"câblage et en sécurité électrique",metier:"le métier d’électricien",realite:"du métier d’électricien"},
+  mspc:{secteur:"la maintenance industrielle",pourquoi:"vous assurez la maintenance d’équipements de production, un domaine que je veux découvrir en situation réelle",bases:"mécanique, en électricité et en sécurité au poste de travail",metier:"le métier de technicien de maintenance",realite:"du métier de technicien de maintenance"},
+  com:{secteur:"la vente",pourquoi:"vous accordez une grande place à l’accueil et au conseil des clients",bases:"accueil du client, mise en rayon et encaissement",metier:"les métiers de la vente",realite:"des métiers de la vente"}
+};
+const domKey=d=>d==="melec"||d==="mspc"?d:"com";
+const QUALITES = [["ponctuel","ponctuel","ponctuelle"],["motive","motivé","motivée"],["serieux","sérieux","sérieuse"],["curieux","curieux","curieuse"],["dynamique","dynamique","dynamique"],["souriant","souriant","souriante"],["rigoureux","rigoureux","rigoureuse"],["autonome","autonome","autonome"],["organise","organisé","organisée"],["patient","patient","patiente"],["poli","poli","polie"],["minutieux","minutieux","minutieuse"],["ecoute","à l’écoute","à l’écoute"],["respectueux","respectueux","respectueuse"],["volontaire","volontaire","volontaire"],["calme","calme","calme"],["investi","investi","investie"]];
+const EXP_TYPES = {obs3:"mon stage d’observation de 3e",pfmp:"ma PFMP",job:"mon job d’été",benevolat:"mon expérience de bénévolat",club:"mon engagement en club",autre:"mon expérience"};
+const POLITESSE = {
+  agreer:a=>`Je vous prie d’agréer, ${a}, l’expression de mes salutations distinguées.`,
+  veuillez:a=>`Veuillez agréer, ${a}, mes respectueuses salutations.`,
+  attente:a=>`Dans l’attente de votre réponse, je vous prie de recevoir, ${a}, mes sincères salutations.`
+};
+const COLORS = {
+  soutenues:[["marine","Bleu marine","#1D3557"],["petrole","Bleu pétrole","#0F5C6E"],["sapin","Vert sapin","#1F5A45"],["bordeaux","Bordeaux","#7B2238"],["prune","Prune","#4E2A63"],["brique","Brique","#9A3B1E"],["anthracite","Anthracite","#2F353B"]],
+  pastel:[["ciel","Bleu ciel","#A9CBEA","#1F4E79"],["eau","Vert d’eau","#AED9C6","#1E5A44"],["rose","Rose poudré","#EBC0CB","#7A2E44"],["lavande","Lavande","#CFC3EA","#47336E"],["peche","Pêche","#F5CBAE","#8A4420"],["sable","Sable","#E8DCB5","#5E4B14"]]
+};
+const STYLES = [["classique","Classique"],["moderne","Moderne"]];
+const MOIS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+
+/* ---------- État ---------- */
+const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
+function blank(){return {prenom:"",nom:"",adresse:"",cp:"",ville:"",tel:"",email:"",genre:"",niveau:"",filiere:"",lyceeNom:LYCEE_NOM,lyceeVille:LYCEE_VILLE,
+  entNom:"",civ:"",contact:"",fonction:"",entAdresse:"",entCp:"",entVille:"",debut:"",fin:"",lieu:"",dateLettre:todayISO(),
+  p1Manual:false,p1:"",p2:"",p3:"",p4:"",p5:"",comps:[],quals:[],politesse:"",pj:true,couleur:"marine",style:"classique",exps:[]}}
+function example(){return Object.assign(blank(),{prenom:"Inès",nom:"Exemple",adresse:"12 rue de l’Exemple",cp:"54700",ville:"Pont-à-Mousson",tel:"06 00 00 00 00",email:"ines.exemple@email.fr",genre:"f",niveau:"1bp",filiere:"melec",
+  entNom:"Électricité Exemple SARL",civ:"m",contact:"Durand",fonction:"Chef d’entreprise",entAdresse:"5 avenue de l’Exemple",entCp:"54700",entVille:"Pont-à-Mousson",debut:"2026-11-30",fin:"2026-12-18",lieu:"Pont-à-Mousson",
+  comps:["Câbler une armoire ou un tableau électrique","Faire des mesures au multimètre"],quals:["motive","ponctuel","minutieux"],politesse:"agreer",couleur:"petrole",style:"classique",
+  p2:"Je souhaite effectuer cette PFMP au sein d’Électricité Exemple SARL car vous intervenez dans l’installation et la maintenance électrique, le domaine qui me passionne. Travailler aux côtés de professionnels expérimentés me permettrait de découvrir la réalité du métier sur les chantiers.",
+  p3:"Au lycée, j’apprends notamment à câbler une armoire ou un tableau électrique et à faire des mesures au multimètre. Lors de ma PFMP de Seconde, j’ai pu poser des goulottes et raccorder des prises dans le respect des règles de sécurité.",
+  p4:"Motivée, ponctuelle et minutieuse, je saurai m’adapter rapidement à votre équipe et respecter vos consignes.",
+  p5:"Je serais heureuse de vous rencontrer lors d’un entretien afin de vous présenter ma motivation. Je vous remercie par avance de l’attention que vous porterez à ma demande."})}
+function load(k){try{const r=localStorage.getItem(k);return r?JSON.parse(r):null}catch(e){return null}}
+let saveT;function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(STORE_KEY,JSON.stringify(S))}catch(e){}},250)}
+let S=Object.assign(blank(),load(STORE_KEY)||{});
+
+/* ---------- Outils ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const has=v=>v&&String(v).trim();
+const ph=(v,label)=>has(v)?esc(v):`<mark>${esc(label)}</mark>`;
+const g=(m,f)=>S.genre==="f"?f:m;
+const lvl=()=>LEVELS[S.niveau],fil=()=>FILIERES[S.filiere];
+const dom=()=>fil()?DOM[domKey(fil().dom)]:null;
+const low=s=>s?s.charAt(0).toLowerCase()+s.slice(1):s;
+const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):s;
+const qa=id=>{const q=QUALITES.find(x=>x[0]===id);return q?g(q[1],q[2]):""};
+function compList(){const f=fil(),l=lvl();if(!f)return [];const c=COMP[f.dom];return [...c[1],...((l&&l.rank>=2)?c[2]:[])]}
+function dLong(iso){if(!iso)return "";const [y,m,d]=iso.split("-").map(Number);return `${d===1?"1er":d} ${MOIS[m-1]} ${y}`}
+function range(){if(!S.debut||!S.fin)return "";const [y1,m1]=S.debut.split("-").map(Number),[y2,m2]=S.fin.split("-").map(Number),d1=+S.debut.split("-")[2];
+  const a=y1===y2?(m1===m2?(d1===1?"1er":d1):`${d1===1?"1er":d1} ${MOIS[m1-1]}`):dLong(S.debut);return `du ${a} au ${dLong(S.fin)}`}
+function entRef(){return has(S.entNom)?S.entNom.trim():"votre entreprise"}
+function deEnt(){const n=entRef();if(n==="votre entreprise")return "de votre entreprise";return /^[aeiouyhéèêàâîôû]/i.test(n)?`d’${n}`:`de ${n}`}
+function auSeinDe(){const n=entRef();if(n==="votre entreprise")return "au sein de votre entreprise";return /^[aeiouyhéèêàâîôû]/i.test(n)?`au sein d’${n}`:`au sein de ${n}`}
+function appel(){return S.civ==="mme"?"Madame":S.civ==="m"?"Monsieur":"Madame, Monsieur"}
+function colorOf(id){for(const k of ["soutenues","pastel"])for(const c of COLORS[k])if(c[0]===id)return {pastel:k==="pastel",main:c[2],title:c[3]||c[2]};return {pastel:false,main:"#1D3557",title:"#1D3557"}}
+
+/* ---------- Phrases proposées ---------- */
+function autoP1(){const L=lvl(),F=fil();
+  return `Actuellement ${g("élève","élève")} en ${L?L.short:"…"}${F?" "+F.sigle:""} au lycée ${S.lyceeNom||"…"} à ${S.lyceeVille||"…"}, je dois effectuer une période de formation en milieu professionnel (PFMP) ${range()||"…"}. Je me permets de vous adresser ma candidature pour réaliser cette période ${auSeinDe().replace("au sein de votre entreprise","dans votre entreprise")}.`}
+function suggP2(){const D=dom(),out=[];
+  if(D)out.push(`Je souhaite effectuer cette PFMP ${auSeinDe()} car ${D.pourquoi}.`);
+  out.push(`Votre entreprise a une bonne réputation${D?` dans le domaine de ${D.secteur}`:""} et j’aimerais apprendre auprès de professionnels expérimentés.`);
+  out.push(`Je connais ${entRef()==="votre entreprise"?"votre entreprise":entRef()} grâce à mon entourage, qui m’en a dit beaucoup de bien.`);
+  if(fil()&&domKey(fil().dom)==="com")out.push(`En tant que ${g("client","cliente")} de votre magasin, j’ai apprécié la qualité de l’accueil et l’organisation des rayons.`);
+  out.push(`Travailler aux côtés de votre équipe me permettrait de découvrir la réalité ${D?D.realite:"du métier"} sur le terrain.`);
+  return out}
+function suggP3(){const D=dom(),out=[],c=S.comps.map(low);
+  if(c.length>=2)out.push(`Au lycée, j’apprends notamment à ${c[0]} et à ${c[1]}.`);
+  else if(c.length===1)out.push(`Au lycée, j’apprends notamment à ${c[0]}.`);
+  if(D)out.push(`Ma formation m’a déjà permis d’acquérir des bases en ${D.bases}.`);
+  S.exps.forEach(e=>{if(!e.entreprise)return;const m=(e.missions||[])[0];out.push(`Lors de ${EXP_TYPES[e.type]||"mon expérience"} chez ${e.entreprise}, j’ai pu ${m?low(m):"découvrir le fonctionnement d’une entreprise"}.`)});
+  out.push(`Cette PFMP me permettra de mettre en pratique ce que j’apprends en classe et de progresser.`);
+  return out}
+function suggP4(){const q=S.quals.map(qa),out=[];
+  if(q.length>=2){const list=q.length===3?`${q[0]}, ${q[1]} et ${q[2]}`:`${q[0]} et ${q[1]}`;
+    out.push(`${cap(list)}, je saurai m’adapter rapidement à votre équipe et respecter vos consignes.`);
+    out.push(`Je suis ${list} : ces qualités me permettront de m’intégrer facilement dans votre entreprise.`);
+    out.push(`Mes professeurs reconnaissent que je suis ${list}.`)}
+  out.push(`J’ai envie d’apprendre et je n’hésite pas à poser des questions quand je ne sais pas.`);
+  out.push(`J’aime travailler en équipe et je fais attention à la qualité de mon travail.`);
+  return out}
+function suggP5(){return [`Je serais ${g("heureux","heureuse")} de vous rencontrer lors d’un entretien afin de vous présenter ma motivation.`,
+  `Vous trouverez ci-joint mon CV. Je reste à votre disposition pour tout renseignement complémentaire.`,
+  `Je vous remercie par avance de l’attention que vous porterez à ma demande.`,
+  `Mon professeur référent se tient également à votre disposition pour vous présenter le déroulement de la PFMP.`]}
+
+/* ---------- Champs obligatoires ---------- */
+function missingList(){
+  const m=[],req=(ok,id,label,step)=>{if(!ok)m.push({id,label,step})};
+  req(has(S.prenom),"f-prenom","Prénom",1);req(has(S.nom),"f-nom","Nom",1);req(has(S.adresse),"f-adresse","Adresse",1);
+  req(/^\d{5}$/.test(S.cp.trim()),"f-cp","Code postal",1);req(has(S.ville),"f-ville","Ville",1);
+  req(S.tel.replace(/\D/g,"").length>=10,"f-tel","Téléphone",1);req(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(S.email.trim()),"f-email","E-mail",1);
+  req(S.genre,"g-genre","Accords",1);req(S.niveau,"f-niveau","Niveau",1);req(S.filiere,"f-filiere","Filière",1);
+  req(has(S.lyceeNom),"f-lyceeNom","Lycée",1);req(has(S.lyceeVille),"f-lyceeVille","Ville du lycée",1);
+  req(has(S.entNom),"f-entNom","Entreprise",2);req(S.civ,"g-civ","Destinataire",2);if(S.civ==="mme"||S.civ==="m")req(has(S.contact),"f-contact","Nom de la personne",2);
+  req(has(S.entAdresse),"f-entAdresse","Adresse de l’entreprise",2);req(/^\d{5}$/.test(S.entCp.trim()),"f-entCp","Code postal",2);req(has(S.entVille),"f-entVille","Ville",2);
+  req(S.debut,"f-debut","Début",3);req(S.fin&&(!S.debut||S.fin>=S.debut),"f-fin","Fin (après le début)",3);req(has(S.lieu),"f-lieu","Ville",3);req(S.dateLettre,"f-dateLettre","Date",3);
+  if(S.p1Manual)req(has(S.p1),"f-p1","Paragraphe 1",4);
+  ["p2","p3","p4","p5"].forEach((k,i)=>req(has(S[k]),"f-"+k,`Paragraphe ${i+2}`,4));
+  req(S.politesse,"g-politesse","Formule de politesse",5);
+  return m}
+function paintMissing(){const m=missingList();
+  document.querySelectorAll(".missing").forEach(e=>e.classList.remove("missing"));
+  m.forEach(x=>{const el=document.getElementById(x.id);if(el)el.classList.add("missing")});
+  for(let s=1;s<=5;s++){const n=m.filter(x=>x.step===s).length,b=document.querySelector(`.done[data-step="${s}"]`);b.textContent=n?`${n} à compléter`:"Complet ✓";b.classList.toggle("ok",!n)}
+  const st=$("#status");st.textContent=m.length?`Il reste ${m.length} élément${m.length>1?"s":""} à compléter`:"Lettre complète ✓";st.classList.toggle("ok",!m.length);return m}
+
+/* ---------- Rendu du formulaire ---------- */
+function fillSelect(sel,opts,val){sel.innerHTML=`<option value="">Choisis…</option>`+opts.map(([v,l])=>`<option value="${esc(v)}"${v===val?" selected":""}>${esc(l)}</option>`).join("")}
+function renderSelects(){fillSelect($("#f-niveau"),Object.entries(LEVELS).map(([k,v])=>[k,v.label]),S.niveau);
+  const fl=Object.entries(FILIERES).filter(([k,f])=>!S.niveau||f.levels.includes(S.niveau)).map(([k,f])=>[k,f.label]);
+  if(S.filiere&&!fl.find(x=>x[0]===S.filiere))S.filiere="";fillSelect($("#f-filiere"),fl,S.filiere)}
+function renderTop(){
+  document.querySelectorAll("[data-k]").forEach(el=>{if(el.tagName!=="SELECT"&&document.activeElement!==el)el.value=S[el.dataset.k]??""});
+  document.querySelectorAll("[data-seg]").forEach(b=>b.setAttribute("aria-pressed",S[b.dataset.seg]===b.dataset.val));
+  $("#contact-field").hidden=!(S.civ==="mme"||S.civ==="m");
+  $("#f-p1").hidden=!S.p1Manual;$("#p1-hint").textContent=S.p1Manual?"Tu écris ce paragraphe toi-même. Pense à indiquer ta classe, ton lycée et les dates de ta PFMP.":"Ce paragraphe s’écrit tout seul avec tes informations des étapes 1 et 3.";
+  $("#p1-toggle").textContent=S.p1Manual?"Revenir au paragraphe automatique":"Je veux l’écrire moi-même";
+  $("#f-pj").checked=!!S.pj;
+}
+function renderSugg(){
+  const put=(id,list,k)=>{$(id).innerHTML=list.map(t=>`<button type="button" data-sugg="${k}" data-val="${esc(t)}">${esc(t)}</button>`).join("")};
+  put("#s-p2",suggP2(),"p2");put("#s-p3",suggP3(),"p3");put("#s-p4",suggP4(),"p4");put("#s-p5",suggP5(),"p5");
+  const cl=compList();S.comps=S.comps.filter(c=>cl.includes(c));
+  $("#g-comps").innerHTML=cl.length?cl.map(c=>{const on=S.comps.includes(c);return `<button type="button" class="chip" data-group="comps" data-val="${esc(c)}" aria-pressed="${on}"${!on&&S.comps.length>=2?" disabled":""}>${esc(c)}</button>`}).join(""):`<span class="hint">Choisis d’abord ton niveau et ta filière à l’étape 1.</span>`;
+  $("#g-quals").innerHTML=QUALITES.map(q=>{const on=S.quals.includes(q[0]);return `<button type="button" class="chip" data-group="quals" data-val="${q[0]}" aria-pressed="${on}"${!on&&S.quals.length>=3?" disabled":""}>${esc(cap(g(q[1],q[2])))}</button>`}).join("");
+  $("#g-politesse").innerHTML=Object.entries(POLITESSE).map(([k,f])=>`<button type="button" data-pol="${k}" aria-pressed="${S.politesse===k}" style="${S.politesse===k?"border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)":""}">${esc(f(appel()))}</button>`).join("");
+}
+function renderAll(){renderSelects();renderTop();renderSugg();checkImport();update()}
+
+/* ---------- Rendu de la lettre ---------- */
+const para=(v,label)=>has(v)?esc(v.trim()).replace(/\n+/g,"<br>"):`<mark>${esc(label)}</mark>`;
+function p1HTML(){if(S.p1Manual)return para(S.p1,"Paragraphe 1 : qui je suis");
+  const L=lvl(),F=fil();
+  return `Actuellement élève en ${L?esc(L.short):"<mark>niveau</mark>"}${F?" "+esc(F.sigle):" <mark>filière</mark>"} au lycée ${ph(S.lyceeNom,"lycée")} à ${ph(S.lyceeVille,"ville")}, je dois effectuer une période de formation en milieu professionnel (PFMP) ${range()?esc(range()):"<mark>du … au …</mark>"}. Je me permets de vous adresser ma candidature pour réaliser cette période ${esc(auSeinDe().replace("au sein de votre entreprise","dans votre entreprise"))}.`}
+function letterHTML(){
+  const att=S.civ==="mme"||S.civ==="m"?`<br>À l’attention de ${S.civ==="mme"?"Madame":"Monsieur"} ${ph(S.contact,"Nom")}${has(S.fonction)?`<br>${esc(S.fonction)}`:""}`:(S.civ?"":"<br><mark>Destinataire ?</mark>");
+  const pj=S.pj?`<p class="lt-pj"><b>Pièce jointe :</b> curriculum vitae</p>`:"";
+  return `<div class="lt-from"><span class="nm">${ph(S.prenom,"Prénom")} ${has(S.nom)?esc(S.nom.toUpperCase()):"<mark>NOM</mark>"}</span><br>${ph(S.adresse,"Adresse")}<br>${ph(S.cp,"Code postal")} ${ph(S.ville,"Ville")}<br>${ph(S.tel,"Téléphone")}<br>${ph(S.email,"E-mail")}</div>
+  <div class="lt-to"><span class="ent">${ph(S.entNom,"Nom de l’entreprise")}</span>${att}<br>${ph(S.entAdresse,"Adresse")}<br>${ph(S.entCp,"Code postal")} ${has(S.entVille)?esc(S.entVille.toUpperCase()):"<mark>VILLE</mark>"}</div>
+  <div class="lt-date">À ${ph(S.lieu,"Ville")}, le ${S.dateLettre?esc(dLong(S.dateLettre)):"<mark>date</mark>"}</div>
+  <p class="lt-obj"><b>Objet :</b> demande de période de formation en milieu professionnel (PFMP) ${range()?esc(range()):"<mark>du … au …</mark>"}</p>${pj}
+  <p class="lt-appel">${S.civ?esc(appel())+",":"<mark>Madame, Monsieur,</mark>"}</p>
+  <div class="lt-body"><p>${p1HTML()}</p><p>${para(S.p2,"Paragraphe 2 : pourquoi cette entreprise")}</p><p>${para(S.p3,"Paragraphe 3 : ce que je sais faire")}</p><p>${para(S.p4,"Paragraphe 4 : mes qualités")}</p>
+  <p>${para(S.p5,"Paragraphe 5 : ma demande")} ${S.politesse?esc(POLITESSE[S.politesse](appel())):"<mark>Formule de politesse</mark>"}</p></div>
+  <div class="lt-sign">${ph(S.prenom,"Prénom")} ${has(S.nom)?esc(S.nom.toUpperCase()):"<mark>NOM</mark>"}</div>`}
+function applyLook(el){el.className="cv"}
+function fit(el){let lo=.7,hi=1.12;el.style.setProperty("--s",hi);if(el.offsetHeight<=1123)return hi;
+  for(let k=0;k<12;k++){const mid=(lo+hi)/2;el.style.setProperty("--s",mid);if(el.offsetHeight<=1123)lo=mid;else hi=mid}el.style.setProperty("--s",lo);return lo}
+function renderLetter(){const el=$("#cv");applyLook(el);el.innerHTML=letterHTML();fit(el);scaleFrame()}
+function scaleFrame(){const fr=$("#frame"),k=fr.clientWidth/794;fr.style.height=(1123*k)+"px";$("#cv").style.transform=`scale(${k})`}
+new ResizeObserver(scaleFrame).observe($("#frame"));
+function update(){renderLetter();paintMissing();save()}
+
+/* ---------- Reprise du CV ---------- */
+function cvData(){const c=load(CV_KEY);return c&&(c.prenom||c.nom)?c:null}
+function checkImport(){const c=cvData();$("#import").hidden=!c;if(c)$("#import-text").textContent=`Tu as déjà rempli ton CV sur cet ordinateur (${[c.prenom,c.nom].filter(Boolean).join(" ")}).`}
+function importCV(){const c=cvData();if(!c)return;
+  ["prenom","nom","adresse","cp","ville","tel","email","genre","niveau","filiere","lyceeNom","lyceeVille"].forEach(k=>{if(has(c[k]))S[k]=c[k]});
+  if(Array.isArray(c.qualites))S.quals=c.qualites.filter(q=>QUALITES.some(x=>x[0]===q)).slice(0,3);
+  if(Array.isArray(c.competences))S.comps=c.competences.slice(0,2);
+  if(Array.isArray(c.experiences))S.exps=c.experiences.map(e=>({type:e.type,entreprise:e.entreprise,missions:e.missions||[]}));
+  if(!has(S.lieu)&&has(c.ville))S.lieu=c.ville;
+  renderAll()}
+
+/* ---------- Évènements ---------- */
+document.addEventListener("input",e=>{const t=e.target;if(!t.dataset.k||t.tagName==="SELECT")return;S[t.dataset.k]=t.value;
+  if(["entNom","comps"].includes(t.dataset.k))renderSugg();update()});
+document.addEventListener("change",e=>{const t=e.target;
+  if(t.id==="f-pj"){S.pj=t.checked;return update()}
+  if(t.tagName==="SELECT"&&t.dataset.k){S[t.dataset.k]=t.value;if(t.dataset.k==="niveau")renderSelects();renderSugg();update()}
+  if(t.dataset.k==="ville"&&!has(S.lieu)){S.lieu=S.ville;renderTop();update()}});
+document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.seg){S[b.dataset.seg]=b.dataset.val;renderTop();renderSugg();return update()}
+  if(b.dataset.group){const arr=S[b.dataset.group],v=b.dataset.val,i=arr.indexOf(v);i>=0?arr.splice(i,1):arr.push(v);renderSugg();return update()}
+  if(b.dataset.sugg){const k=b.dataset.sugg,v=b.dataset.val;if(!S[k].includes(v))S[k]=(S[k].trim()?S[k].trim()+" ":"")+v;renderTop();return update()}
+  if(b.dataset.clear){S[b.dataset.clear]="";renderTop();return update()}
+  if(b.dataset.pol){S.politesse=b.dataset.pol;renderSugg();return update()}
+});
+$("#p1-toggle").addEventListener("click",()=>{S.p1Manual=!S.p1Manual;if(S.p1Manual&&!has(S.p1))S.p1=autoP1();renderTop();update();if(S.p1Manual)$("#f-p1").focus()});
+$("#import-btn").addEventListener("click",importCV);
+
+let confirmAction=null;
+function ask(text,action,yes){$("#confirm-text").textContent=text;$("#confirm-yes").textContent=yes;confirmAction=action;$("#confirm").hidden=false}
+$("#reset").addEventListener("click",()=>ask("Tout effacer ? Ta lettre sera vidée.",()=>{S=blank();renderAll()},"Oui, tout effacer"));
+$("#example").addEventListener("click",()=>ask("Remplacer ta lettre par l’exemple ? Ce que tu as écrit sera effacé.",()=>{S=example();renderAll()},"Oui, voir l’exemple"));
+$("#confirm-yes").addEventListener("click",()=>{$("#confirm").hidden=true;confirmAction&&confirmAction()});
+$("#confirm-no").addEventListener("click",()=>{$("#confirm").hidden=true});
+
+function showMsg(t,kind){const m=$("#dl-msg");m.textContent=t;m.className="msg "+kind;m.hidden=false}
+$("#dl").addEventListener("click",async()=>{
+  const miss=paintMissing();
+  if(miss.length){showMsg(`Il manque encore ${miss.length} élément${miss.length>1?"s":""} (en jaune). Je t’emmène au premier.`,"warn");
+    const el=document.getElementById(miss[0].id);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});const f=el.matches("input,select,textarea")?el:el.querySelector("input,select,textarea,button");f&&setTimeout(()=>f.focus({preventScroll:true}),400)}return}
+  const btn=$("#dl");btn.disabled=true;btn.textContent="Création du PDF…";
+  try{await document.fonts.ready;
+    const host=document.createElement("div");host.style.cssText="position:fixed;left:-10000px;top:0;width:794px;";
+    const el=document.createElement("div");host.appendChild(el);document.body.appendChild(host);
+    applyLook(el);el.innerHTML=letterHTML();fit(el);el.style.height="1123px";el.style.overflow="hidden";
+    const canvas=await html2canvas(el,{scale:2.5,backgroundColor:"#ffffff",width:794,height:1123,windowWidth:794});host.remove();
+    const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:"mm",format:"a4",orientation:"portrait"});
+    pdf.addImage(canvas.toDataURL("image/jpeg",.93),"JPEG",0,0,210,297);
+    const clean=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9-]+/g,"_");
+    const filename=`Lettre_motivation_${clean(S.prenom)}_${clean(S.nom).toUpperCase()}.pdf`;
+    const dl=window.claude&&typeof window.claude.use==="function"?await window.claude.use("downloads"):null;
+    if(dl){try{await dl.save({filename,data:pdf.output("blob")});showMsg("Ta lettre est enregistrée dans tes téléchargements.","good")}
+      catch(err){showMsg(err&&err.code==="declined"?"Enregistrement annulé. Clique à nouveau sur le bouton quand tu veux.":"Le PDF n’a pas pu être enregistré ici. Réessaie dans un instant.","warn")}}
+    else{pdf.save(filename);showMsg("Ta lettre est enregistrée dans tes téléchargements.","good")}
+  }catch(err){showMsg("Le PDF n’a pas pu être créé. Vérifie ta connexion Internet puis réessaie.","warn")}
+  finally{btn.disabled=false;btn.textContent="Télécharger ma lettre en PDF"}});
+
+if(/claude/i.test(location.hostname))$("#nav-cv").hidden=true;
+if(!load(STORE_KEY)&&cvData())importCV(); else renderAll();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(renderLetter);
+</script>
+
+</body>
+</html>

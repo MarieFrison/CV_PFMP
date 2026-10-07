@@ -43,6 +43,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .intro{display:grid;gap:6px;padding-block:18px 8px}
 h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
 .intro p{margin:0;max-width:70ch;color:var(--muted)}
+.navlink{font-weight:700;color:var(--accent);text-decoration:none;border-bottom:2px solid currentColor;width:fit-content}
 .intro mark{background:var(--miss);color:var(--miss-ink);padding:0 4px;border-radius:3px}
 
 .layout{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:28px;align-items:start;margin-top:14px}
@@ -194,6 +195,7 @@ textarea{resize:vertical;min-height:84px}
   <section class="intro">
     <h1>Mon CV pour la PFMP</h1>
     <p>Remplis les étapes à gauche : ton CV se construit tout seul à droite. Tout ce qui est <mark>surligné en jaune</mark> manque encore : <b>tous les champs sont obligatoires</b>. Dès qu’il n’y a plus de jaune, tu peux enregistrer ton CV en PDF.</p>
+    <a class="navlink" id="nav-lettre" href="lettre.html">Écrire ma lettre de motivation →</a>
   </section>
 
   <div class="layout">
@@ -682,6 +684,7 @@ $("#dl").addEventListener("click",async()=>{
   finally{btn.disabled=false;btn.textContent="Télécharger mon CV en PDF"}
 });
 
+if(/claude/i.test(location.hostname))$("#nav-lettre").hidden=true;
 if(AUTEUR)$("#author-line").textContent=` · Adapté par ${AUTEUR}`;
 renderAll();
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(renderCV);
